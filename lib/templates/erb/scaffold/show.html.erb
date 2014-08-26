@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="content">
+    <ul class="nav nav-tabs nav-justified">
+      <li class="active"><%%= link_to 'Show', '#' %></li>
+      <li><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %></li>
+      <li><%%= link_to 'All', <%= index_helper %>_path %></li>
+    </ul>
+    <div class="page-header">
+      <h1>Show</h1>
+    </div>
+    <% attributes.each do |attribute| -%>
+    <p>
+      <strong><%= attribute.human_name %>:</strong>
+      <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+    </p>
+
+    <% end -%>
+  </div>
+</div>
+
