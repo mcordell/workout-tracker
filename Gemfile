@@ -14,6 +14,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
 
+gem 'five_three_one', git: 'git@git.mdcordell.com:mcordell/five_three_one.git', branch: 'master'
+
 group :development, :test do
   gem 'spring'
   gem 'pry-rails'
