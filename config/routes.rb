@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :workout_sets
+
   resources :workouts
 
   resources :subcycles

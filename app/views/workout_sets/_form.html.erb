@@ -1,0 +1,37 @@
+<%= form_for(@workout_set) do |f| %>
+  <% if @workout_set.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workout_set.errors.count, "error") %> prohibited this workout_set from being saved:</h2>
+
+      <ul>
+      <% @workout_set.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :exercise %><br>
+    <%= f.text_field :exercise, class: 'form-control', placeholder: 'exercise' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :workout %><br>
+    <%= f.text_field :workout, class: 'form-control', placeholder: 'workout' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :intended_reps %><br>
+    <%= f.number_field :intended_reps, class: 'form-control', placeholder: 'intended_reps' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :weight %><br>
+    <%= f.number_field :weight, class: 'form-control', placeholder: 'weight' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :peformed_reps %><br>
+    <%= f.number_field :peformed_reps, class: 'form-control', placeholder: 'peformed_reps' %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

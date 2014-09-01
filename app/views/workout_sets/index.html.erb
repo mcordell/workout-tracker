@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="content">
+    <ul class="nav nav-tabs nav-justified">
+      <li><%= link_to 'New Workout set', new_workout_set_path %></li>
+      <li class="active"><%= link_to 'All', workout_sets_path %></li>
+    </ul>
+    <div class="page-header">
+      <h1>Listing <small>workout_sets</small></h1>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+              <th>Exercise</th>
+              <th>Workout</th>
+              <th>Intended reps</th>
+              <th>Weight</th>
+              <th>Peformed reps</th>
+              <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @workout_sets.each do |workout_set| %>
+          <tr>
+                <td><%= workout_set.exercise %></td>
+                <td><%= workout_set.workout %></td>
+                <td><%= workout_set.intended_reps %></td>
+                <td><%= workout_set.weight %></td>
+                <td><%= workout_set.peformed_reps %></td>
+                <td><%= link_to '', workout_set, class: 'glyphicon glyphicon-eye-open' %>
+                <%= link_to '', edit_workout_set_path(workout_set), class: 'glyphicon glyphicon-pencil' %>
+                <%= link_to '', workout_set, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
