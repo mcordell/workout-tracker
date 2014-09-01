@@ -1,1 +1,11 @@
-<h1>This is a home page</h1>
+<div class="container">
+	<div class="content">
+		<% if signed_in? %>
+			  <div><%= link_to "Start Workout", "#", class: "btn btn-lg btn-primary btn-block"%></div>
+				<%= current_program(current_user) %>
+		<% else %>
+			  <div><%= link_to "Sign in", new_user_session_path, class: "btn btn-lg btn-primary btn-block"%></div>
+		<% end %>
+	</div>
+</div>
+

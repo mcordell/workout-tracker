@@ -2,20 +2,16 @@
   <div class="content">
     <ul class="nav nav-tabs nav-justified">
       <li class="active"><%= link_to 'Show', '#' %></li>
-      <li><%= link_to 'Edit', edit_program_path(@program) %></li>
-      <li><%= link_to 'All', programs_path %></li>
+      <li><%= link_to 'Edit', edit_user_program_path(current_user, @program) %></li>
+      <li><%= link_to 'All', user_programs_path(current_user) %></li>
     </ul>
     <div class="page-header">
-      <h1>Show</h1>
+      <h1><%= @program.name %></h1>
     </div>
-        <p>
-      <strong>Name:</strong>
-      <%= @program.name %>
-    </p>
 
         <p>
       <strong>User:</strong>
-      <%= @program.user %>
+      <%= @program.user.name %>
     </p>
 
       </div>

@@ -16,10 +16,11 @@ class ProgramsController < ApplicationController
   end
 
   def create
-    @program = Program.new(program_params)
+    user = User.find(params[:user_id])
+    @program = user.programs.build(program_params)
 
     if @program.save
-      redirect_to @program, notice: 'Program was successfully created.'
+      redirect_to user_program_path(user, @program), notice: 'Program was successfully created.'
     else
       render :new
     end

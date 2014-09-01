@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :weights
 
-  resources :programs
+  resources :users do
+    resources :programs
+  end
 
   resources :exercises
 
