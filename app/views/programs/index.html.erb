@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="content">
+    <ul class="nav nav-tabs nav-justified">
+      <li><%= link_to 'New Program', new_program_path %></li>
+      <li class="active"><%= link_to 'All', programs_path %></li>
+    </ul>
+    <div class="page-header">
+      <h1>Listing <small>programs</small></h1>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+              <th>Name</th>
+              <th>User</th>
+              <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @programs.each do |program| %>
+          <tr>
+                <td><%= program.name %></td>
+                <td><%= program.user %></td>
+                <td><%= link_to '', program, class: 'glyphicon glyphicon-eye-open' %>
+                <%= link_to '', edit_program_path(program), class: 'glyphicon glyphicon-pencil' %>
+                <%= link_to '', program, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
