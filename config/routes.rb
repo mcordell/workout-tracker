@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cycles
+
   resources :weights
 
   resources :programs

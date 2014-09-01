@@ -1,0 +1,25 @@
+<%= form_for(@cycle) do |f| %>
+  <% if @cycle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cycle.errors.count, "error") %> prohibited this cycle from being saved:</h2>
+
+      <ul>
+      <% @cycle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :starting_weight %><br>
+    <%= f.text_field :starting_weight, class: 'form-control', placeholder: 'starting_weight' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :program %><br>
+    <%= f.text_field :program, class: 'form-control', placeholder: 'program' %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
