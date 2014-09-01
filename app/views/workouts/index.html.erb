@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="content">
+    <ul class="nav nav-tabs nav-justified">
+      <li><%= link_to 'New Workout', new_workout_path %></li>
+      <li class="active"><%= link_to 'All', workouts_path %></li>
+    </ul>
+    <div class="page-header">
+      <h1>Listing <small>workouts</small></h1>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+              <th>Subcycle</th>
+              <th>Workout date</th>
+              <th>Notes</th>
+              <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @workouts.each do |workout| %>
+          <tr>
+                <td><%= workout.subcycle %></td>
+                <td><%= workout.workout_date %></td>
+                <td><%= workout.notes %></td>
+                <td><%= link_to '', workout, class: 'glyphicon glyphicon-eye-open' %>
+                <%= link_to '', edit_workout_path(workout), class: 'glyphicon glyphicon-pencil' %>
+                <%= link_to '', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
