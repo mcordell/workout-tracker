@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="content">
+    <ul class="nav nav-tabs nav-justified">
+      <li class="active"><%= link_to 'Show', '#' %></li>
+      <li><%= link_to 'Edit', edit_subcycle_path(@subcycle) %></li>
+      <li><%= link_to 'All', subcycles_path %></li>
+    </ul>
+    <div class="page-header">
+      <h1>Show</h1>
+    </div>
+        <p>
+      <strong>Cycle:</strong>
+      <%= @subcycle.cycle %>
+    </p>
+
+        <p>
+      <strong>Number:</strong>
+      <%= @subcycle.number %>
+    </p>
+
+      </div>
+</div>
+

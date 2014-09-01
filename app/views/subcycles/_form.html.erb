@@ -1,0 +1,25 @@
+<%= form_for(@subcycle) do |f| %>
+  <% if @subcycle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subcycle.errors.count, "error") %> prohibited this subcycle from being saved:</h2>
+
+      <ul>
+      <% @subcycle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :cycle %><br>
+    <%= f.text_field :cycle, class: 'form-control', placeholder: 'cycle' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :number %><br>
+    <%= f.number_field :number, class: 'form-control', placeholder: 'number' %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

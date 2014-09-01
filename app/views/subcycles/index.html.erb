@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="content">
+    <ul class="nav nav-tabs nav-justified">
+      <li><%= link_to 'New Subcycle', new_subcycle_path %></li>
+      <li class="active"><%= link_to 'All', subcycles_path %></li>
+    </ul>
+    <div class="page-header">
+      <h1>Listing <small>subcycles</small></h1>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+              <th>Cycle</th>
+              <th>Number</th>
+              <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @subcycles.each do |subcycle| %>
+          <tr>
+                <td><%= subcycle.cycle %></td>
+                <td><%= subcycle.number %></td>
+                <td><%= link_to '', subcycle, class: 'glyphicon glyphicon-eye-open' %>
+                <%= link_to '', edit_subcycle_path(subcycle), class: 'glyphicon glyphicon-pencil' %>
+                <%= link_to '', subcycle, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
