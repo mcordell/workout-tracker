@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource param_method: :exercise_params
 
   # GET /exercises
   def index
@@ -46,11 +46,6 @@ class ExercisesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_exercise
-      @exercise = Exercise.find(params[:id])
-    end
-
     # Only allow a trusted parameter "white list" through.
     def exercise_params
       params.require(:exercise).permit(:name)

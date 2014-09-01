@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.1.0'
 gem 'devise'
 gem 'figaro'
+gem 'cancancan'
 gem 'pg'
 
 #Asset stuff
