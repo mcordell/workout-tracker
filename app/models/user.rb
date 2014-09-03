@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
   end
 
   def current_program
+    programs.active.first
   end
 end

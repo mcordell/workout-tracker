@@ -46,6 +46,6 @@ class CyclesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def cycle_params
-      params.require(:cycle).permit(:starting_weight, :program, :cycle_number)
+      params.require(:cycle).permit(:starting_weight, :program, :cycle_number, :active)
     end
 end
