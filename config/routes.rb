@@ -5,13 +5,15 @@ Rails.application.routes.draw do
 
   resources :subcycles
 
-  resources :cycles
 
   resources :weights
 
-  devise_for :users do
-    resources :programs
+  devise_for :users
+
+  resources :programs do
+    resources :cycles
   end
+
 
   resources :exercises
 
