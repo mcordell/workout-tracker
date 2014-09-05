@@ -24,7 +24,7 @@ class CyclesController < ApplicationController
     @cycle = @program.cycles.build()
     @cycle.active = true
     @cycle.starting_weight = weight
-
+    @cycle = CycleCreator.create(@cycle, params[:options])
     if @cycle.save
       redirect_to [@program, @cycle], notice: 'Cycle was successfully created.'
     else
