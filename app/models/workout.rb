@@ -13,6 +13,7 @@
 class Workout < ActiveRecord::Base
   belongs_to :subcycle
   has_many :workout_sets
+  scope :incomplete, -> { where('workout_date is NULL') }
 
   def copy_from_object(workout)
     workout.sets.each do |set_obj|

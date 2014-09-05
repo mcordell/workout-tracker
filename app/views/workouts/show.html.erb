@@ -10,7 +10,7 @@
     </div>
         <p>
       <strong>Subcycle:</strong>
-      <%= @workout.subcycle %>
+      <%= @workout.subcycle.number %>
     </p>
 
         <p>
@@ -23,6 +23,22 @@
       <%= @workout.notes %>
     </p>
 
+	<table class="table">
+		<tr>
+			<th>Exercise</th>
+			<th>Weight</th>
+			<th>Reps</th>
+		</tr>
+		<% @workout.workout_sets.each do |set| %>
+			<tr>
+				<td><%= set.exercise.name %> </td>
+				<td><%= set.weight %></td>
+				<td><%= set.intended_reps %></td>
+			</tr>
+
+
+		<% end %>
+	</table>
       </div>
 </div>
 

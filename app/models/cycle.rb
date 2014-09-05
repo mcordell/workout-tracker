@@ -15,6 +15,7 @@ class Cycle < ActiveRecord::Base
   belongs_to :program
   belongs_to :starting_weight, class: Weight, :foreign_key => "starting_weight_id"
   has_many :subcycles
+  has_many :workouts, through: :subcycles
   scope :active, -> { where(active: true) }
 
   def copy_from_object(cycle)
@@ -23,5 +24,9 @@ class Cycle < ActiveRecord::Base
       subcycle.copy_from_object(sub)
       subcycle.number = i
     end
+  end
+
+  def next_workout
+    workouts.order(:id).incomplete.first
   end
 end
