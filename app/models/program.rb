@@ -3,6 +3,8 @@ class Program < ActiveRecord::Base
   has_many :cycles
   scope :active, -> { where(active: true) }
 
+  TYPES = [:five_three_one]
+
   def current_cycle
     cycles.active.first
   end

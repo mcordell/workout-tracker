@@ -15,6 +15,12 @@
     <%= f.label :name %><br>
     <%= f.text_field :name, class: 'form-control', placeholder: 'name' %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :program_type %><br>
+	<%= f.select :program_type, options_for_select(Program::TYPES.map { |type| [type.to_s.humanize, type.to_s]}), class: 'form-control' %>
+  </div>
+
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>
   </div>
