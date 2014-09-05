@@ -7,7 +7,6 @@ class CycleCreator
       program = FiveThreeOne::Program.new
       program.config.load_config_from_file(File.join(Rails.root, 'config', 'five_three_one.yml'))
       program.starting_weights = cycle_options.each { |k,v| cycle_options[k] = v.to_i }
-      raise "error"
       cycle.copy_from_object(program.create_cycle)
       cycle
     end
