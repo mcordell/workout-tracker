@@ -19,6 +19,10 @@
   <%= f.label :cycle_number, "Cycle Number" %>
   <%= f.text_field :cycle_number, class: 'form-control' %>
 
+  <% if @program.program_type == 'five_three_one' %>
+	  <%= render 'five_three_one', form: f %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>
   </div>
