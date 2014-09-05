@@ -12,11 +12,24 @@
       <%= @cycle.starting_weight.value %>
     </p>
 
-        <p>
+	<p>
       <strong>Program:</strong>
       <%= @cycle.program.name %>
     </p>
 
+
+	<h3>Subcycles</h3>
+	<% @cycle.subcycles.each do |subcycle|%>
+		<h4>Subcycle <%= subcycle.number %> : </h4>
+		<table>
+			<th>Workout</th>
+			<% subcycle.workouts.each do |workout| %>
+				<tr>
+					<td><%= link_to "Workout Link", workout_path(workout)  %></td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
       </div>
 </div>
 
