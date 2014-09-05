@@ -25,7 +25,11 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  def workout
+  end
+
   def update
+    @workout.workout_date = Time.now
     if @workout.update(workout_params)
       redirect_to @workout, notice: 'Workout was successfully updated.'
     else
@@ -46,6 +50,6 @@ class WorkoutsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def workout_params
-      params.require(:workout).permit(:subcycle_id, :workout_date, :notes)
+      params.require(:workout).permit(:subcycle_id, :workout_date, :notes, workout_sets_attributes: [:peformed_reps, :id])
     end
 end

@@ -31,4 +31,8 @@ class WorkoutSet < ActiveRecord::Base
     end
     self.intended_reps = reps
   end
+
+  def is_plus_set?
+    options.include? :plus_set
+  end
 end

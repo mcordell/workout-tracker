@@ -30,11 +30,8 @@
 			<th>Reps</th>
 		</tr>
 		<% @workout.workout_sets.each do |set| %>
-			<tr>
-				<td><%= set.exercise.name %> </td>
-				<td><%= set.weight %></td>
-				<td><%= set.intended_reps %></td>
-			</tr>
+			<%= render 'workout_sets/set', set: set %>
+
 
 
 		<% end %>

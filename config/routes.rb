@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :workouts
 
+  get 'doworkout/:id', to: "workouts#workout", as: 'doworkout'
+
   resources :subcycles
 
 
