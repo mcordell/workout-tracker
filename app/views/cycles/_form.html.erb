@@ -1,4 +1,4 @@
-<%= form_for(@cycle) do |f| %>
+<%= form_for([@program, @cycle]) do |f| %>
   <% if @cycle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cycle.errors.count, "error") %> prohibited this cycle from being saved:</h2>
@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :starting_weight %><br>
-    <%= f.text_field :starting_weight, class: 'form-control', placeholder: 'starting_weight' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :program %><br>
-    <%= f.text_field :program, class: 'form-control', placeholder: 'program' %>
-  </div>
+  <%= f.fields_for :weight, @start_weight do |weight| %>
+  	<%= weight.label :value, "Starting Weight" %>
+  	<%= weight.text_field :value, class: 'form-control' %>
+  <% end %>
+
+  <%= f.label :cycle_number, "Cycle Number" %>
+  <%= f.text_field :cycle_number, class: 'form-control' %>
+
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>
   </div>

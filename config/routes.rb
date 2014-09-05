@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :cycles
+
   resources :programs do
     resources :cycles
   end
