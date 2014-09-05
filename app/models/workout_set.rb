@@ -17,4 +17,18 @@ class WorkoutSet < ActiveRecord::Base
   belongs_to :exercise
   belongs_to :workout
   serialize :options, Array
+
+  def copy_from_object(set_obj)
+    self.exercise = Exercise.find_or_create_by(name: set_obj.exercise)
+    assign_reps(set_obj.reps)
+    self.weight = set_obj.weight
+  end
+
+  def assign_reps(reps)
+    if /\d+\+/.match(reps.to_s)
+      self.options.push(:plus_set)
+      reps.gsub!(/\+/,'')
+    end
+    self.intended_reps = reps
+  end
 end

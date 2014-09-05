@@ -12,4 +12,11 @@
 class Subcycle < ActiveRecord::Base
   belongs_to :cycle
   has_many :workouts
+
+  def copy_from_object(subcycle)
+    subcycle.workouts.each do |work|
+      workout = workouts.build
+      workout.copy_from_object(work)
+    end
+  end
 end
