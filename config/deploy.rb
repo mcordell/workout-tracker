@@ -14,7 +14,7 @@ set :format, :pretty
 #set :log_level, :debug
 set :pty, true
 
-set :linked_files, %w{config/database.yml config/application.yml}
+set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 
@@ -25,7 +25,7 @@ namespace :deploy do
 
   task :setup_config do
     on roles(:app), except: {no_release: true} do
-      execute 'sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/winestat"'
+      execute 'sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/workout"'
     end
   end
 
