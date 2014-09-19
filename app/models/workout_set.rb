@@ -27,9 +27,10 @@ class WorkoutSet < ActiveRecord::Base
   def assign_reps(reps)
     if /\d+\+/.match(reps.to_s)
       self.options.push(:plus_set)
-      reps.gsub!(/\+/,'')
+      self.intended_reps = reps.gsub(/\+/,'')
+    else
+      self.intended_reps = reps
     end
-    self.intended_reps = reps
   end
 
   def is_plus_set?

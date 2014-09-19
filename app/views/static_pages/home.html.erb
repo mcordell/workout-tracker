@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="content">
 		<% if signed_in? %>
-			  <div><%= link_to "Start Workout", doworkout_path(current_user.next_workout), class: "btn btn-lg btn-primary btn-block"%></div>
+			  <div><%= link_to "Start Workout", "#", class: "btn btn-lg btn-primary btn-block"%></div>
 				<%= current_program(current_user) %>
 		<% else %>
 			  <div><%= link_to "Sign in", new_user_session_path, class: "btn btn-lg btn-primary btn-block"%></div>
