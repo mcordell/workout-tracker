@@ -29,4 +29,11 @@ class Cycle < ActiveRecord::Base
   def next_workout
     workouts.order(:id).incomplete.first
   end
+
+  def finished?
+    subcycles.each do |s|
+      return false unless s.finished?
+      true
+    end
+  end
 end

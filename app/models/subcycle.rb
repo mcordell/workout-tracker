@@ -19,4 +19,11 @@ class Subcycle < ActiveRecord::Base
       workout.copy_from_object(work)
     end
   end
+
+  def finished?
+    workouts.each do |workout|
+      return false unless workout.workout_date
+    end
+    true
+  end
 end
