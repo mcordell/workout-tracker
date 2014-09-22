@@ -9,9 +9,9 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+	<% end %>
 
-  <%= f.fields_for :weight, @start_weight do |weight| %>
+  <%= f.fields_for :starting_weight, @cycle.starting_weight do |weight| %>
   	<%= weight.label :value, "Starting Weight" %>
   	<%= weight.text_field :value, class: 'form-control' %>
   <% end %>
@@ -19,7 +19,7 @@
   <%= f.label :cycle_number, "Cycle Number" %>
   <%= f.text_field :cycle_number, class: 'form-control' %>
 
-  <% if @cycle.program.program_type == 'five_three_one' %>
+  <% if @cycle.new_record? && @cycle.program.program_type == 'five_three_one' %>
 	  <%= render 'five_three_one', form: f %>
   <% end %>
 

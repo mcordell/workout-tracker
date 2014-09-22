@@ -21,7 +21,7 @@
         <% @programs.each do |program| %>
           <tr>
                 <td><%= program.name %></td>
-                <td><%= program.user %></td>
+                <td><%= program.user.name %></td>
                 <td><%= link_to '', program, class: 'glyphicon glyphicon-eye-open' %>
                 <%= link_to '', edit_program_path(program), class: 'glyphicon glyphicon-pencil' %>
                 <%= link_to '', program, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>

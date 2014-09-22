@@ -36,4 +36,8 @@ class WorkoutSet < ActiveRecord::Base
   def is_plus_set?
     options.include? :plus_set
   end
+
+  def rep_difference
+    self.peformed_reps ? self.peformed_reps - self.intended_reps : 0
+  end
 end

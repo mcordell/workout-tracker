@@ -1,5 +1,11 @@
 <tr>
-	<td><%= set.exercise.name %> </td>
+	<td><%= set.exercise.name.humanize %> </td>
 	<td><%= set.weight %></td>
-	<td><%= set.intended_reps %></td>
+	<td><%= set.intended_reps %>
+	<% if set.rep_difference > 0 %>
+		<span class="positive-reps">+ <%= set.rep_difference %></span>
+	<% elsif set.rep_difference < 0 %>
+		<span class="negative-reps">- <%= set.rep_difference %></span>
+	<% end %>
+</td>
 </tr>

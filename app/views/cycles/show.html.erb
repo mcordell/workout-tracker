@@ -2,7 +2,7 @@
   <div class="content">
     <ul class="nav nav-tabs nav-justified">
       <li class="active"><%= link_to 'Show', '#' %></li>
-      <li><%= link_to 'Edit', edit_cycle_path(@cycle) %></li>
+      <li><%= link_to 'Edit', edit_program_cycle_path(@cycle.program, @cycle) %></li>
     </ul>
     <div class="page-header">
       <h1>Show</h1>
@@ -14,18 +14,18 @@
 
 	<p>
       <strong>Program:</strong>
-      <%= @cycle.program.name %>
+      <%= link_to @cycle.program.name, program_path(@cycle.program) %>
     </p>
 
 
 	<h3>Subcycles</h3>
 	<% @cycle.subcycles.each do |subcycle|%>
-		<h4>Subcycle <%= subcycle.number %> : </h4>
+		<h4>Subcycle <%= subcycle.number + 1 %> : </h4>
 		<table>
 			<th>Workout</th>
-			<% subcycle.workouts.each do |workout| %>
+			<% subcycle.workouts.each.with_index do |workout, i| %>
 				<tr>
-					<td><%= link_to "Workout Link", workout_path(workout)  %></td>
+					<td><%= link_to "Workout #{ i + 1} Link", workout_path(workout)  %></td>
 				</tr>
 			<% end %>
 		</table>

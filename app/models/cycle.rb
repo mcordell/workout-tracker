@@ -17,6 +17,7 @@ class Cycle < ActiveRecord::Base
   has_many :subcycles
   has_many :workouts, through: :subcycles
   scope :active, -> { where(active: true) }
+  accepts_nested_attributes_for :starting_weight
 
   def copy_from_object(cycle)
     cycle.subcycles.each_with_index do |sub, i|

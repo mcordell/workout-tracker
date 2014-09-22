@@ -17,6 +17,27 @@
 	<p>
 		  <%= current_cycle(@program) %>
     </p>
+    <table class="table">
+      <thead>
+        <tr>
+              <th>Number</th>
+              <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @program.cycles.each do |cycle| %>
+          <tr>
+                <td><%= cycle.cycle_number %></td>
+				<td><%= cycle.finished? ? "\u2713" : "" %></td>
+                <td><%= link_to '', cycle, class: 'glyphicon glyphicon-eye-open' %>
+                <%= link_to '', cycle_path(cycle), class: 'glyphicon glyphicon-pencil' %>
+                <%= link_to '', cycle, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
       </div>
 </div>
