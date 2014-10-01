@@ -23,7 +23,7 @@
 		<h4>Subcycle <%= subcycle.number + 1 %> : </h4>
 		<table>
 			<th>Workout</th>
-			<% subcycle.workouts.each.with_index do |workout, i| %>
+			<% subcycle.workouts.order(id: :asc).each.with_index do |workout, i| %>
 				<tr>
 					<td><%= link_to "Workout #{ i + 1} Link", workout_path(workout)  %></td>
 				</tr>
