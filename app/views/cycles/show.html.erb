@@ -5,7 +5,9 @@
       <li><%= link_to 'Edit', edit_program_cycle_path(@cycle.program, @cycle) %></li>
     </ul>
     <div class="page-header">
-      <h1>Show</h1>
+		<h1>
+			Cycle <%= @cycle.cycle_number %>
+		</h1>
     </div>
         <p>
       <strong>Starting weight:</strong>
@@ -19,17 +21,25 @@
 
 
 	<h3>Subcycles</h3>
-	<% @cycle.subcycles.each do |subcycle|%>
-		<h4>Subcycle <%= subcycle.number + 1 %> : </h4>
 		<table>
-			<th>Workout</th>
+			<tr>
+				<th width="40px"></th>
+				<th>Workout link</th>
+			</tr>
+	<% @cycle.subcycles.each do |subcycle|%>
+		<tr>
+			<td colspan=2>
+				Subcycle <%= subcycle.number + 1 %>
+			</td>
+		</tr>
 			<% subcycle.workouts.order(id: :asc).each.with_index do |workout, i| %>
 				<tr>
+					<td></td>
 					<td><%= link_to "Workout #{ i + 1} Link", workout_path(workout)  %></td>
 				</tr>
 			<% end %>
-		</table>
 	<% end %>
+		</table>
       </div>
 </div>
 

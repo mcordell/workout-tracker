@@ -1,11 +1,33 @@
-<%= label_tag "options[press]", "Press" %>
-<%= text_field_tag "options[press]", nil, class: 'form-control' %>
 
-<%= label_tag "options[deadlift]", "Deadlift" %>
-<%= text_field_tag "options[deadlift]", nil, class: 'form-control' %>
+<div class="row">
+	<div class="col-md-8">
 
-<%= label_tag "options[bench_press]", "Bench Press" %>
-<%= text_field_tag "options[bench_press]", nil, class: 'form-control' %>
+	</div>
+</div>
+<div class="form-group">
+	<%= label_tag "options[press]", "Press", class: 'col-sm-2 control-label' %>
+	<div class="col-md-10">
+		<%= text_field_tag "options[press]", nil, class: 'form-control' %>
+	</div>
+</div>
 
-<%= label_tag "options[squat]", "Squat" %>
-<%= text_field_tag "options[squat]", nil, class: 'form-control' %>
+<div class="form-group">
+	<%= label_tag "options[deadlift]", "Deadlift" , class: 'col-sm-2 control-label'%>
+	<div class="col-md-10">
+		<%= text_field_tag "options[deadlift]", nil, class: 'form-control' %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= label_tag "options[bench_press]", "Bench Press" , class: 'col-sm-2 control-label'%>
+	<div class="col-md-10">
+		<%= text_field_tag "options[bench_press]", nil, class: 'form-control' %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= label_tag "options[squat]", "Squat" , class: 'col-sm-2 control-label'%>
+	<div class="col-md-10">
+		<%= text_field_tag "options[squat]", nil, class: 'form-control' %>
+	</div>
+</div>
