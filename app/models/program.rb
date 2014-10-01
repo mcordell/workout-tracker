@@ -20,6 +20,6 @@ class Program < ActiveRecord::Base
   TYPES = [:five_three_one]
 
   def current_cycle
-    cycles.active.first
+    cycles.unfinished.active.last
   end
 end
