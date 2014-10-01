@@ -17,7 +17,7 @@ class Cycle < ActiveRecord::Base
   has_many :subcycles
   has_many :workouts, through: :subcycles
   scope :active, -> { where(active: true) }
-  scope :unfinished, -> { joins(:workouts).where('workouts.workout_date IS NOT NULL').uniq }
+  scope :unfinished, -> { joins(:workouts).where('workouts.workout_date IS NULL').uniq }
   accepts_nested_attributes_for :starting_weight
 
   def copy_from_object(cycle)
