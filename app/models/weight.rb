@@ -11,6 +11,7 @@
 #
 
 class Weight < ActiveRecord::Base
+  belongs_to :weightable, polymorphic: true
 
   before_save :defaults
 
