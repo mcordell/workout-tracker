@@ -15,7 +15,7 @@
 
 FactoryGirl.define do
   factory :program do
-    name "MyString"
-    user ""
+    name "Five three one"
+    user
   end
 end

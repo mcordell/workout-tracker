@@ -13,7 +13,7 @@
 
 FactoryGirl.define do
   factory :subcycle do
-    cycle ""
+    cycle
     number 1
   end
 end

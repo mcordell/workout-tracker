@@ -14,7 +14,7 @@
 
 FactoryGirl.define do
   factory :weight do
-    value 1
-    unit "MyString"
+    value 186
+    unit "lb"
   end
 end
