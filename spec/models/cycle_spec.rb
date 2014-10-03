@@ -11,8 +11,15 @@
 #  active             :boolean
 #
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe Cycle, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "finished" do
+    let(:workout_finished) { FactoryGirl.create(:workout, workout_date: Time.now) }
+    let(:workout_unfinished) { FactoryGirl.create(:cycle, program: workout_finished.subcycle.cycle.program) }
+
+    it "returns cycles that have all of their workouts finished" do
+      expect(Cycle.finished).to eq [workout_finished.subcycle.cycle]
+    end
+  end
 end
