@@ -29,7 +29,12 @@ namespace :deploy do
     end
   end
 
+  task :restart do
+    on roles(:app) do
+      execute :sudo, :sv, 'restart', 'workout'
+    end
+  end
+
   after :finishing, 'deploy:cleanup'
   after :finishing, 'deploy:restart'
-
 end
