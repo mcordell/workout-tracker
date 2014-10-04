@@ -27,6 +27,8 @@ class Cycle < ActiveRecord::Base
   scope :recent_workout_completion, -> { joins(:workouts).group('cycles.id').order('MAX(workouts.workout_date) DESC') }
   accepts_nested_attributes_for :starting_weight
 
+  validates_numericality_of(:cycle_number)
+
   def copy_from_object(cycle)
     cycle.subcycles.each_with_index do |sub, i|
       subcycle = subcycles.build
