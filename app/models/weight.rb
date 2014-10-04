@@ -18,4 +18,8 @@ class Weight < ActiveRecord::Base
   def defaults
     unit = 'lb' if unit.nil?
   end
+
+  def exercise_name
+    weightable.name if weightable.class == Exercise
+  end
 end
