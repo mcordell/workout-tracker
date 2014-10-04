@@ -15,7 +15,7 @@ class Program < ActiveRecord::Base
   belongs_to :user
   has_many :cycles
   scope :active, -> { where(active: true) }
-  delegate :next_workout, to: :current_cycle
+  delegate :next_workout, to: :current_cycle, allow_nil: true
 
   TYPES = [:five_three_one]
 

@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   has_many :programs
   has_many :weights, as: :weightable
-  delegate :next_workout, to: :current_program
+  delegate :next_workout, to: :current_program, allow_nil: true
 
   def name
     "#{first_name} #{last_name}"
