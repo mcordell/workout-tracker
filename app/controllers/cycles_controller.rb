@@ -1,19 +1,19 @@
 class CyclesController < ApplicationController
-    load_and_authorize_resource param_method: :cycle_params
+  load_and_authorize_resource param_method: :cycle_params
 
-    def index
-      @cycles = Cycle.all
-    end
+  def index
+    @cycles = Cycle.all
+  end
 
-    def show
-    end
+  def show
+  end
 
-    def new
-      program = Program.find(params[:program_id])
-      @cycle = program.cycles.build()
-      @cycle.cycle_number = program.cycles.count
-      @cycle.build_starting_weight
-    end
+  def new
+    program = Program.find(params[:program_id])
+    @cycle = program.cycles.build()
+    @cycle.cycle_number = program.cycles.count
+    @cycle.build_starting_weight
+  end
 
   def edit
   end

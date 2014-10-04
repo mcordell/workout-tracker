@@ -29,7 +29,7 @@
 			<th>Weight</th>
 			<th>Reps</th>
 		</tr>
-		<% @workout.workout_sets.each do |set| %>
+		<% @workout.workout_sets.order(:id).eager_load(:weight).each do |set| %>
 			<%= render 'workout_sets/set', set: set %>
 		<% end %>
 	</table>

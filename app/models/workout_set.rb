@@ -22,9 +22,9 @@ class WorkoutSet < ActiveRecord::Base
   delegate :program, to: :workout
 
   def copy_from_object(set_obj)
-    self.exercise = Exercise.find_or_create_by(name: set_obj.exercise)
+    exercise = Exercise.find_or_create_by(name: set_obj.exercise)
+    self.weight = Weight.new(value: set_obj.weight, weightable: exercise)
     assign_reps(set_obj.reps)
-    self.weight = set_obj.weight
   end
 
   def assign_reps(reps)
