@@ -43,4 +43,8 @@ class WorkoutSet < ActiveRecord::Base
   def rep_difference
     self.peformed_reps ? self.peformed_reps - self.intended_reps : 0
   end
+
+  def exercise_name
+    weight ? weight.exercise_name : ""
+  end
 end
