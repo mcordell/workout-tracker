@@ -14,6 +14,9 @@
 #
 
 class WorkoutSet < ActiveRecord::Base
+
+  before_destroy :destroy_weight
+
   belongs_to :exercise
   belongs_to :workout
   belongs_to :weight
@@ -46,5 +49,9 @@ class WorkoutSet < ActiveRecord::Base
 
   def exercise_name
     weight ? weight.exercise_name : ""
+  end
+
+  def destroy_weight
+    self.weight.delete if self.weight
   end
 end

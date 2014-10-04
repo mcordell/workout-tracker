@@ -12,7 +12,7 @@
 
 class Workout < ActiveRecord::Base
   belongs_to :subcycle
-  has_many :workout_sets
+  has_many :workout_sets, dependent: :destroy
   scope :incomplete, -> { where('workout_date is NULL') }
   accepts_nested_attributes_for :workout_sets
   delegate :cycle, to: :subcycle

@@ -11,7 +11,7 @@
 
 class Subcycle < ActiveRecord::Base
   belongs_to :cycle
-  has_many :workouts
+  has_many :workouts, dependent: :destroy
   delegate :program, to: :cycle
 
   def copy_from_object(subcycle)

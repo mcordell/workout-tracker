@@ -14,9 +14,9 @@
 class Cycle < ActiveRecord::Base
   belongs_to :program
   belongs_to :starting_weight, class: Weight, :foreign_key => "starting_weight_id"
-  has_many :cycle_weights
+  has_many :cycle_weights, dependent: :destroy
   has_many :weights, through: :cycle_weights
-  has_many :subcycles
+  has_many :subcycles, dependent: :destroy
   has_many :workouts, through: :subcycles
   scope :active, -> { where(active: true) }
   scope :unfinished, -> { joins(:workouts).where('workouts.workout_date IS NULL').uniq }
