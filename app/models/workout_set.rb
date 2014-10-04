@@ -16,7 +16,10 @@
 class WorkoutSet < ActiveRecord::Base
   belongs_to :exercise
   belongs_to :workout
+  belongs_to :weight
   serialize :options, Array
+  delegate  :cycle, to: :workout
+  delegate :program, to: :workout
 
   def copy_from_object(set_obj)
     self.exercise = Exercise.find_or_create_by(name: set_obj.exercise)

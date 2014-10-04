@@ -15,6 +15,8 @@ class Workout < ActiveRecord::Base
   has_many :workout_sets
   scope :incomplete, -> { where('workout_date is NULL') }
   accepts_nested_attributes_for :workout_sets
+  delegate :cycle, to: :subcycle
+  delegate :program, to: :cycle
 
   def copy_from_object(workout)
     workout.sets.each do |set_obj|

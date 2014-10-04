@@ -12,6 +12,7 @@
 class Subcycle < ActiveRecord::Base
   belongs_to :cycle
   has_many :workouts
+  delegate :program, to: :cycle
 
   def copy_from_object(subcycle)
     subcycle.workouts.each do |work|
