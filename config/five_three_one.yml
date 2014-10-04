@@ -65,3 +65,4 @@ accessory_scheme:
       sets: 5
       weight: 85
 
+workout_order: ['press', 'deadlift', 'bench_press', 'squat']
