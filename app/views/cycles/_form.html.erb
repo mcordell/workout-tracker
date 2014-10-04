@@ -1,4 +1,4 @@
-<%= form_for([@program, @cycle], html: {class: 'form-horizontal'} ) do |f| %>
+<%= form_for([@cycle.program, @cycle], html: {class: 'form-horizontal'} ) do |f| %>
   <% if @cycle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cycle.errors.count, "error") %> prohibited this cycle from being saved:</h2>
