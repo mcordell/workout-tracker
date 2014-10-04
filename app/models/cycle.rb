@@ -18,7 +18,13 @@ class Cycle < ActiveRecord::Base
   has_many :workouts, through: :subcycles
   scope :active, -> { where(active: true) }
   scope :unfinished, -> { joins(:workouts).where('workouts.workout_date IS NULL').uniq }
-  scope :finished, -> { joins(:workouts).where('workouts.workout_date IS NOT NULL').uniq }
+  scope :finished, -> { where('cycles.id NOT IN ( ? )' ,
+                              Cycle.select('cycles.id').
+                                    joins(:workouts).
+                                    where('workouts.workout_date IS NULL').
+                                    group('cycles.id')
+                             ) }
+  scope :recent_workout_completion, -> { joins(:workouts).group('cycles.id').order('MAX(workouts.workout_date) DESC') }
   accepts_nested_attributes_for :starting_weight
 
   def copy_from_object(cycle)
