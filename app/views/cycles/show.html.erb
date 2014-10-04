@@ -9,15 +9,37 @@
 			Cycle <%= @cycle.cycle_number %>
 		</h1>
     </div>
-        <p>
-      <strong>Starting weight:</strong>
-      <%= @cycle.starting_weight.value if @cycle.starting_weight %>
-    </p>
+	<div class="row">
+		<div class="col-md-12">
+			  <strong>Starting weight:</strong>
+			  <%= @cycle.starting_weight.value if @cycle.starting_weight %>
+		</div>
+	</div>
 
-	<p>
-      <strong>Program:</strong>
-      <%= link_to @cycle.program.name, program_path(@cycle.program) %>
-    </p>
+	<div class="row">
+		<div class="col-md-6">
+		  <strong>Program:</strong>
+		  <%= link_to @cycle.program.name, program_path(@cycle.program) %>
+		</div>
+
+		<% unless @cycle.cycle_weights.empty? %>
+			<div class="col-md-6">
+				<table class="table">
+					<tr>
+						<th>Exercise</th>
+						<th>Weight</th>
+					</tr>
+				<% @cycle.weights.each do |weight| %>
+					<tr>
+						<td><%= weight.exercise_name.humanize %></td>
+						<td><%= weight.value %></td>
+					</tr>
+				<% end -%>
+
+				</table>
+			</div>
+		<% end %>
+	</div>
 
 
 	<h3>Subcycles</h3>
