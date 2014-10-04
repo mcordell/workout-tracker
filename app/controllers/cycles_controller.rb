@@ -13,6 +13,7 @@ class CyclesController < ApplicationController
     @cycle = program.cycles.build()
     @cycle.cycle_number = program.cycles.count
     @cycle.build_starting_weight
+    CycleCreator.add_starting_weights(@cycle)
   end
 
   def edit
@@ -22,7 +23,7 @@ class CyclesController < ApplicationController
     program = Program.find(params[:program_id])
     @cycle = program.cycles.build(cycle_params.merge({active: true}))
     @cycle.starting_weight.weightable = current_user
-    @cycle = CycleCreator.create(@cycle, params[:options])
+    @cycle = CycleCreator.create(@cycle)
     if @cycle.save
       redirect_to [@program, @cycle], notice: 'Cycle was successfully created.'
     else
@@ -51,6 +52,8 @@ class CyclesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def cycle_params
-      params.require(:cycle).permit(:cycle_number, starting_weight_attributes: [:value, :id])
+      params.require(:cycle).permit(:cycle_number,
+                                    starting_weight_attributes: [:value, :id],
+                                    cycle_weights_attributes: [weight_attributes: [:id, :value, :weightable_id, :weightable_type]])
     end
 end
