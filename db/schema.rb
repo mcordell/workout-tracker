@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004050753) do
+ActiveRecord::Schema.define(version: 20141004060928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cycle_weights", force: true do |t|
+    t.integer  "weight_id"
+    t.integer  "cycle_id"
+    t.string   "flag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cycles", force: true do |t|
     t.integer  "starting_weight_id"

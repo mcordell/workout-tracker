@@ -14,6 +14,8 @@
 class Cycle < ActiveRecord::Base
   belongs_to :program
   belongs_to :starting_weight, class: Weight, :foreign_key => "starting_weight_id"
+  has_many :cycle_weights
+  has_many :weights, through: :cycle_weights
   has_many :subcycles
   has_many :workouts, through: :subcycles
   scope :active, -> { where(active: true) }
@@ -26,6 +28,8 @@ class Cycle < ActiveRecord::Base
                              ) }
   scope :recent_workout_completion, -> { joins(:workouts).group('cycles.id').order('MAX(workouts.workout_date) DESC') }
   accepts_nested_attributes_for :starting_weight
+  accepts_nested_attributes_for :cycle_weights
+  accepts_nested_attributes_for :weights
 
   validates_numericality_of(:cycle_number)
 
@@ -45,6 +49,12 @@ class Cycle < ActiveRecord::Base
     subcycles.each do |s|
       return false unless s.finished?
       true
+    end
+  end
+
+  def cycle_weights_array
+    cycle_weights.each_with_object({}) do |cycle_weight, hsh|
+      hsh[cycle_weight.weight.exercise_name.to_sym] = cycle_weight.weight.value
     end
   end
 end
