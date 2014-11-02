@@ -5,7 +5,7 @@
 	<% if set.rep_difference > 0 %>
 		<span class="positive-reps">+ <%= set.rep_difference %></span>
 	<% elsif set.rep_difference < 0 %>
-		<span class="negative-reps">- <%= set.rep_difference %></span>
+		<span class="negative-reps"><%= set.rep_difference %></span>
 	<% end %>
 </td>
 </tr>
