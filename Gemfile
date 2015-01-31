@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+ruby '2.2.0'
+gem 'rails', '4.2.0'
 gem 'devise'
 gem 'figaro'
 gem 'cancancan'
@@ -24,8 +25,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'rspec-rails'
   gem 'guard-rspec'
-  gem 'guard-livereload'
-  gem 'rack-livereload'
   gem 'factory_girl_rails'
   gem 'capistrano'
   gem 'capistrano-bundler'
@@ -41,4 +40,3 @@ gem 'unicorn'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

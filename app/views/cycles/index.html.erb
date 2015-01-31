@@ -1,7 +1,6 @@
 <div class="container">
   <div class="content">
     <ul class="nav nav-tabs nav-justified">
-      <li><%= link_to 'New Cycle', new_cycle_path %></li>
       <li class="active"><%= link_to 'All', cycles_path %></li>
     </ul>
     <div class="page-header">
@@ -20,8 +19,8 @@
       <tbody>
         <% @cycles.each do |cycle| %>
           <tr>
-                <td><%= cycle.starting_weight %></td>
-                <td><%= cycle.program %></td>
+                <td><%= "#{ cycle.starting_weight.value }  #{ cycle.starting_weight.unit }"%></td>
+				<td><%= "#{ cycle.program.name } #{cycle.cycle_number}" %></td>
                 <td><%= link_to '', cycle, class: 'glyphicon glyphicon-eye-open' %>
                 <%= link_to '', edit_cycle_path(cycle), class: 'glyphicon glyphicon-pencil' %>
                 <%= link_to '', cycle, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
