@@ -1,3 +1,4 @@
+source 'https://repo.fury.io/SE6vvnTSx2Vbz38w3Ad_/app33624847_heroku_com/'
 source 'https://rubygems.org'
 
 ruby '2.2.0'
@@ -15,7 +16,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
 
-gem 'five_three_one', git: 'git@git.mdcordell.com:mcordell/five_three_one.git', branch: 'master'
+gem 'five_three_one'
 
 group :development, :test do
   gem 'spring'

@@ -1,11 +1,5 @@
-GIT
-  remote: git@git.mdcordell.com:mcordell/five_three_one.git
-  revision: e820ed880332c7d6cdd0367763c26e63f0ded4e8
-  branch: master
-  specs:
-    five_three_one (0.0.1)
-
 GEM
+  remote: https://repo.fury.io/SE6vvnTSx2Vbz38w3Ad_/app33624847_heroku_com/
   remote: https://rubygems.org/
   specs:
     actionmailer (4.2.0)
@@ -47,7 +41,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (6.0.0)
-    bcrypt (3.1.7)
+    bcrypt (3.1.10)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -83,10 +77,11 @@ GEM
     coffee-script-source (1.7.1)
     colorize (0.7.3)
     debug_inspector (0.0.2)
-    devise (3.3.0)
+    devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
+      responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
@@ -101,6 +96,7 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    five_three_one (0.0.1)
     formatador (0.2.5)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
@@ -179,6 +175,8 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -255,7 +253,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   figaro
-  five_three_one!
+  five_three_one
   guard-rspec
   jquery-rails
   pg
