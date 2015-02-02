@@ -17,6 +17,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 
 gem 'five_three_one'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'spring'
