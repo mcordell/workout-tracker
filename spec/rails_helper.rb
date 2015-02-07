@@ -41,3 +41,12 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+def valid_user(email, password)
+  FactoryGirl.create(:user, email: email, password: password)
+end
+
+def login(user)
+  login_page = LoginPage.new
+  login_page.login(user.email, user.password)
+end
