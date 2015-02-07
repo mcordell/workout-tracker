@@ -20,6 +20,7 @@ gem 'five_three_one'
 gem 'rails_12factor', group: :production
 
 group :development, :test do
+  gem 'capybara'
   gem 'spring'
   gem 'pry-rails'
   gem 'annotate'
