@@ -19,4 +19,20 @@ FactoryGirl.define do
     program
     cycle_number 1
   end
+
+  trait :inactive do
+    active false
+  end
+
+  trait :with_unfinished_subcycle do
+    after(:create) do |cycle|
+      FactoryGirl.create(:subcycle, :with_not_completed_workouts, cycle: cycle)
+    end
+  end
+
+  trait :with_finished_subcycles do
+    after(:create) do |cycle|
+      FactoryGirl.create_list(:subcycle, 2, :with_completed_workouts, cycle: cycle)
+    end
+  end
 end

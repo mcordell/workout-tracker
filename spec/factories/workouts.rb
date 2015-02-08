@@ -15,7 +15,14 @@
 FactoryGirl.define do
   factory :workout do
     subcycle
-    workout_date "2014-09-01 10:31:29"
     notes "MyText"
+  end
+
+  trait :not_completed do
+    workout_date nil
+  end
+
+  trait :completed do
+    workout_date "2014-09-01 10:31:29"
   end
 end

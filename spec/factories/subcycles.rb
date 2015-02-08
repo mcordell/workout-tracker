@@ -16,4 +16,16 @@ FactoryGirl.define do
     cycle
     number 1
   end
+
+  trait :with_not_completed_workouts do
+    after(:create) do |subcycle|
+      FactoryGirl.create_list(:workout, 2, :not_completed, subcycle: subcycle)
+    end
+  end
+
+  trait :with_completed_workouts do
+    after(:create) do |subcycle|
+      FactoryGirl.create_list(:workout, 2, :completed, subcycle: subcycle)
+    end
+  end
 end
