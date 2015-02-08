@@ -16,7 +16,7 @@ class CycleCreator
     when 'five_three_one'
       program = FiveThreeOne::Program.new
       program.config.load_config_from_file(File.join(Rails.root, 'config', 'five_three_one.yml'))
-      program.starting_weights = cycle.cycle_weights_array
+      program.starting_weights = cycle.cycle_weights_hash
       cycle.copy_from_object(program.create_cycle)
       cycle
     end
