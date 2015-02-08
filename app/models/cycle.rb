@@ -33,6 +33,12 @@ class Cycle < ActiveRecord::Base
 
   validates_numericality_of(:cycle_number)
 
+  after_initialize :defaults
+
+  def defaults
+    self.active ||= true
+  end
+
   def copy_from_object(cycle)
     cycle.subcycles.each_with_index do |sub, i|
       subcycle = subcycles.build
