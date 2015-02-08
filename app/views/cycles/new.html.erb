@@ -9,5 +9,15 @@
     </div>
 
     <%= render 'form' %>
+
+	<div class="well">
+		<h3>Previous Cycle</h3>
+		<% if @previous_cycle %>
+			<%	@previous_cycle.cycle_weights.each do |cycle_weight| %>
+				<% weight = cycle_weight.weight %>
+				<%= weight.exercise_name + " #{weight.value} "%>
+			<% end %>
+		<% end %>
+	</div>
   </div>
 </div>

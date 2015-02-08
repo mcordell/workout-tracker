@@ -10,8 +10,9 @@ class CyclesController < ApplicationController
 
   def new
     program = Program.find(params[:program_id])
-    @cycle = program.cycles.build()
-    @cycle.cycle_number = program.cycles.count
+    @previous_cycle = Program.find(params[:program_id]).cycles.order(:created_at).last
+    @cycle = program.cycles.build
+    @cycle.cycle_number = @previous_cycle.cycle_number + 1 if @previous_cycle
     @cycle.build_starting_weight
     CycleCreator.add_starting_weights(@cycle)
   end
