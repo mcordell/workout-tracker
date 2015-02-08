@@ -11,4 +11,6 @@
 class Exercise < ActiveRecord::Base
   has_many :workout_sets
   has_many :weights, as: :weightable
+
+  validates :name, presence: true
 end
