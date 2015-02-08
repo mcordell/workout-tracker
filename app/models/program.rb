@@ -17,6 +17,8 @@ class Program < ActiveRecord::Base
   scope :active, -> { where(active: true) }
   delegate :next_workout, to: :current_cycle, allow_nil: true
 
+  validates :name, presence: true
+
   TYPES = [:five_three_one]
 
   def current_cycle
