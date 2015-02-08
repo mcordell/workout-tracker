@@ -10,23 +10,33 @@
 #  updated_at         :datetime
 #  active             :boolean
 #
-
 class Cycle < ActiveRecord::Base
   belongs_to :program
-  belongs_to :starting_weight, class: Weight, :foreign_key => "starting_weight_id"
+  belongs_to :starting_weight,
+             class: Weight,
+             foreign_key: 'starting_weight_id'
   has_many :cycle_weights, dependent: :destroy
   has_many :weights, through: :cycle_weights
   has_many :subcycles, dependent: :destroy
   has_many :workouts, through: :subcycles
+
   scope :active, -> { where(active: true) }
-  scope :unfinished, -> { joins(:workouts).where('workouts.workout_date IS NULL').uniq }
-  scope :finished, -> { where('cycles.id NOT IN ( ? )' ,
-                              Cycle.select('cycles.id').
-                                    joins(:workouts).
-                                    where('workouts.workout_date IS NULL').
-                                    group('cycles.id')
-                             ) }
-  scope :recent_workout_completion, -> { joins(:workouts).group('cycles.id').order('MAX(workouts.workout_date) DESC') }
+  scope :unfinished,
+        -> { joins(:workouts).where('workouts.workout_date IS NULL').uniq }
+  scope :finished, lambda { where('cycles.id NOT IN ( ? )',
+                                  Cycle.select('cycles.id')
+                                        .joins(:workouts)
+                                        .where('workouts.workout_date IS NULL')
+                                        .group('cycles.id')
+                             )
+  }
+  scope :recent_workout_completion,
+        lambda {
+          joins(:workouts)
+            .group('cycles.id')
+            .order('MAX(workouts.workout_date) DESC')
+        }
+
   accepts_nested_attributes_for :starting_weight
   accepts_nested_attributes_for :cycle_weights
   accepts_nested_attributes_for :weights
