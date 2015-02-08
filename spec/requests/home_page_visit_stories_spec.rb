@@ -30,6 +30,10 @@ RSpec.describe "visiting the Home page", type: :request do
       it "has a logout button" do
         expect(home_page).to have_logout_button
       end
+
+      it "contains a link to the program lists" do
+        expect(home_page).to have_programs_link
+      end
     end
   end
 end
