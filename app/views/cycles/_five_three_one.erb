@@ -1,7 +1,7 @@
 <%= form.fields_for :cycle_weights do |cycle_weight_fields| %>
 	<% cycle_weight_fields.fields_for :weight do |weight_fields| %>
 		<div class="form-group">
-			<% exercise_name =  cycle_weight_fields.object.weight.exercise_name.humanize %>
+			<% exercise_name =  cycle_weight_fields.object.weight.name.humanize %>
 			<%= weight_fields.label :value, exercise_name, class: 'col-sm-2 control-label'%>
 			<div class="col-md-10">
 				<%= weight_fields.text_field :value, class: 'form-control' %>

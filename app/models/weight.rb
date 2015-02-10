@@ -15,13 +15,10 @@
 class Weight < ActiveRecord::Base
   belongs_to :weightable, polymorphic: true
 
-  before_save :defaults
+  before_create :defaults
+  delegate :name, to: :weightable
 
   def defaults
-    unit = 'lb' if unit.nil?
-  end
-
-  def exercise_name
-    weightable.name if weightable.class == Exercise
+    self.unit = 'lbs' if unit.nil?
   end
 end

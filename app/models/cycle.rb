@@ -70,7 +70,7 @@ class Cycle < ActiveRecord::Base
 
   def cycle_weights_hash
     cycle_weights.each_with_object({}) do |cycle_weight, hsh|
-      hsh[cycle_weight.weight.exercise_name.to_sym] = cycle_weight.weight.value
+      hsh[cycle_weight.weight.name.to_sym] = cycle_weight.weight.value
     end
   end
 end

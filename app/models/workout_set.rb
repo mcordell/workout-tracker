@@ -24,6 +24,7 @@ class WorkoutSet < ActiveRecord::Base
   serialize :options, Array
   delegate  :cycle, to: :workout
   delegate :program, to: :workout
+  delegate :name, to: :weight, allow_nil: true
 
   def copy_from_object(set_obj)
     exercise = Exercise.find_or_create_by(name: set_obj.exercise)
@@ -33,8 +34,8 @@ class WorkoutSet < ActiveRecord::Base
 
   def assign_reps(reps)
     if /\d+\+/.match(reps.to_s)
-      self.options.push(:plus_set)
-      self.intended_reps = reps.gsub(/\+/,'')
+      options.push(:plus_set)
+      self.intended_reps = reps.gsub(/\+/, '')
     else
       self.intended_reps = reps
     end
@@ -46,10 +47,6 @@ class WorkoutSet < ActiveRecord::Base
 
   def rep_difference
     self.peformed_reps ? self.peformed_reps - self.intended_reps : 0
-  end
-
-  def exercise_name
-    weight ? weight.exercise_name : ""
   end
 
   def destroy_weight
