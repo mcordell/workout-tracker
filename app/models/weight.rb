@@ -2,12 +2,14 @@
 #
 # Table name: weights
 #
-#  id         :integer          not null, primary key
-#  value      :integer
-#  user_id    :integer
-#  unit       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id              :integer          not null, primary key
+#  value           :integer
+#  user_id         :integer
+#  unit            :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  weightable_id   :integer
+#  weightable_type :string(255)
 #
 
 class Weight < ActiveRecord::Base

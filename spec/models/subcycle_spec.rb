@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: subcycles
+#
+#  id         :integer          not null, primary key
+#  cycle_id   :integer
+#  number     :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'rails_helper'
 
 describe Subcycle do

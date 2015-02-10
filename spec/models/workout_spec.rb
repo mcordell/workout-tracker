@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: workouts
+#
+#  id           :integer          not null, primary key
+#  subcycle_id  :integer
+#  workout_date :datetime
+#  notes        :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 require 'rails_helper'
 
 describe Workout do

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: programs
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  user_id      :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#  active       :boolean
+#  program_type :string(255)
+#
+
 require 'rails_helper'
 
 describe Program do

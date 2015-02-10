@@ -11,6 +11,7 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  options       :text
+#  weight_id     :integer
 #
 
 class WorkoutSet < ActiveRecord::Base
