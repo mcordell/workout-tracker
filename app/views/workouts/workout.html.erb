@@ -28,9 +28,9 @@
 			<tr>
 				<td><%= set.name.humanize %></td>
 				<% if set.plus_set? %>
-					<td><%= s.text_field :peformed_reps, class: 'form_control', placeholder: "#{set.intended_reps}+" %></td>
+					<td><%= s.text_field :performed_reps, class: 'form_control', placeholder: "#{set.intended_reps}+" %></td>
 				<% else %>
-					<td><%= s.text_field :peformed_reps, value: set.intended_reps, class: 'form_control' %></td>
+					<td><%= s.text_field :performed_reps, value: set.intended_reps, class: 'form_control' %></td>
 
 				<% end -%>
 				<td><%= set.weight.value if set.weight %></td>

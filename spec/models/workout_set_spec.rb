@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: workout_sets
+#
+#  id             :integer          not null, primary key
+#  exercise_id    :integer
+#  workout_id     :integer
+#  intended_reps  :integer
+#  weight         :integer
+#  performed_reps :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  options        :text
+#  weight_id      :integer
+#
+
 require 'rails_helper'
 
 describe WorkoutSet do
@@ -5,7 +21,7 @@ describe WorkoutSet do
 
   describe ".rep_difference" do
     describe "when the performed reps is more than the intended" do
-      let(:workout_set) { FactoryGirl.build(:workout_set, intended_reps: 6, peformed_reps: 7) }
+      let(:workout_set) { FactoryGirl.build(:workout_set, intended_reps: 6, performed_reps: 7) }
 
       it "returns a positive number for the difference" do
         expect(workout_set.rep_difference).to eq 1
@@ -13,7 +29,7 @@ describe WorkoutSet do
     end
 
     describe "when the performed reps is less than the intended" do
-      let(:workout_set) { FactoryGirl.build(:workout_set, intended_reps: 6, peformed_reps: 5) }
+      let(:workout_set) { FactoryGirl.build(:workout_set, intended_reps: 6, performed_reps: 5) }
 
       it "returns a negative number for the difference" do
         expect(workout_set.rep_difference).to eq -1
@@ -21,7 +37,7 @@ describe WorkoutSet do
     end
 
     describe "when performed reps is not present" do
-      let(:workout_set) { FactoryGirl.build(:workout_set, intended_reps: 6, peformed_reps: nil) }
+      let(:workout_set) { FactoryGirl.build(:workout_set, intended_reps: 6, performed_reps: nil) }
 
       it "return nil" do
         expect(workout_set.rep_difference).to be_nil

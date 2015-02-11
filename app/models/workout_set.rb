@@ -2,16 +2,16 @@
 #
 # Table name: workout_sets
 #
-#  id            :integer          not null, primary key
-#  exercise_id   :integer
-#  workout_id    :integer
-#  intended_reps :integer
-#  weight        :integer
-#  peformed_reps :integer
-#  created_at    :datetime
-#  updated_at    :datetime
-#  options       :text
-#  weight_id     :integer
+#  id             :integer          not null, primary key
+#  exercise_id    :integer
+#  workout_id     :integer
+#  intended_reps  :integer
+#  weight         :integer
+#  performed_reps :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  options        :text
+#  weight_id      :integer
 #
 
 class WorkoutSet < ActiveRecord::Base
@@ -47,6 +47,6 @@ class WorkoutSet < ActiveRecord::Base
   end
 
   def rep_difference
-    peformed_reps - intended_reps if peformed_reps
+    performed_reps - intended_reps if performed_reps
   end
 end
