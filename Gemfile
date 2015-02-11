@@ -35,6 +35,10 @@ group :development, :test do
   gem 'capistrano-rails'
 end
 
+group :test do
+  gem 'simplecov', require: false
+end
+
 # Use unicorn as the app server
 gem 'unicorn'
 
