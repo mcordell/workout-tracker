@@ -19,9 +19,9 @@
 FactoryGirl.define do
   factory :workout_set do
     exercise nil
-    workout ""
+    workout
     intended_reps 1
-    weight 1
     peformed_reps 1
+    weight
   end
 end

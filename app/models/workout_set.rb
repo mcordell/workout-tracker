@@ -15,15 +15,14 @@
 #
 
 class WorkoutSet < ActiveRecord::Base
-
-  before_destroy :destroy_weight
-
   belongs_to :exercise
   belongs_to :workout
   belongs_to :weight
   serialize :options, Array
+
   delegate  :cycle, to: :workout
   delegate :program, to: :workout
+  delegate :subcycle, to: :workout
   delegate :name, to: :weight, allow_nil: true
 
   def copy_from_object(set_obj)
@@ -33,7 +32,9 @@ class WorkoutSet < ActiveRecord::Base
   end
 
   def assign_reps(reps)
-    if /\d+\+/.match(reps.to_s)
+    reps = reps.to_s
+    fail if /-\d+/.match(reps)
+    if /\d+\+/.match(reps)
       options.push(:plus_set)
       self.intended_reps = reps.gsub(/\+/, '')
     else
@@ -41,15 +42,11 @@ class WorkoutSet < ActiveRecord::Base
     end
   end
 
-  def is_plus_set?
+  def plus_set?
     options.include? :plus_set
   end
 
   def rep_difference
-    self.peformed_reps ? self.peformed_reps - self.intended_reps : 0
-  end
-
-  def destroy_weight
-    self.weight.delete if self.weight
+    peformed_reps - intended_reps if peformed_reps
   end
 end

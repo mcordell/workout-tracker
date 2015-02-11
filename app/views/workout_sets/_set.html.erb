@@ -2,10 +2,12 @@
 	<td><%= set.weight.name.humanize %> </td>
 	<td><%= set.weight.value if set.weight %></td>
 	<td><%= set.intended_reps %>
-	<% if set.rep_difference > 0 %>
-		<span class="positive-reps">+ <%= set.rep_difference %></span>
-	<% elsif set.rep_difference < 0 %>
-		<span class="negative-reps"><%= set.rep_difference %></span>
+	<% if set.rep_difference %>
+		<% if set.rep_difference > 0 %>
+			<span class="positive-reps">+ <%= set.rep_difference %></span>
+		<% elsif set.rep_difference < 0 %>
+			<span class="negative-reps"><%= set.rep_difference %></span>
+		<% end %>
 	<% end %>
 </td>
 </tr>
