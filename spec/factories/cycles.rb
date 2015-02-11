@@ -35,4 +35,10 @@ FactoryGirl.define do
       FactoryGirl.create_list(:subcycle, 2, :with_completed_workouts, cycle: cycle)
     end
   end
+
+  trait :in_active_program do
+    before(:create) do |cycle|
+      cycle.program = FactoryGirl.create(:program, active: true)
+    end
+  end
 end

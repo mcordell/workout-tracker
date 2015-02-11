@@ -25,4 +25,10 @@ FactoryGirl.define do
   trait :completed do
     workout_date "2014-09-01 10:31:29"
   end
+
+  trait :in_active_subcycle do
+    before(:create) do |workout|
+      workout.subcycle = FactoryGirl.create(:subcycle, :in_active_cycle)
+    end
+  end
 end

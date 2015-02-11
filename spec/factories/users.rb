@@ -29,4 +29,16 @@ FactoryGirl.define do
     sequence (:email) { |n| "someperson#{n}@example.com" }
     password "password"
   end
+
+  trait :with_inactive_programs do
+    after(:create) do |user|
+      FactoryGirl.create_list(:program, 2, :inactive, user: user)
+    end
+  end
+
+  trait :with_active_program do
+    after(:create) do |user|
+      FactoryGirl.create_list(:program, 2, :inactive, user: user)
+    end
+  end
 end

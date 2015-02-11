@@ -24,8 +24,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :rememberable, :trackable, :validatable
+
   has_many :programs
   has_many :weights, as: :weightable
+
   delegate :next_workout, to: :current_program, allow_nil: true
 
   def name
@@ -33,6 +35,6 @@ class User < ActiveRecord::Base
   end
 
   def current_program
-    programs.active.first
+    programs.active.last
   end
 end
