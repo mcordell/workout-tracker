@@ -11,14 +11,11 @@
 #  weightable_id   :integer
 #  weightable_type :string(255)
 #
-
 require 'rails_helper'
 
 describe Weight do
-  it "defaults to 'lbs' when a unit is not provided at creation" do
-    weight = FactoryGirl.create(:weight, unit: nil)
-    expect(weight.unit).to eq 'lbs'
-  end
+
+  it_behaves_like 'weight'
 
   it "delegates name to its weightable" do
     exercise = FactoryGirl.create(:exercise, name: 'Something')

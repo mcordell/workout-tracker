@@ -18,6 +18,8 @@ class Weight < ActiveRecord::Base
   before_create :defaults
   delegate :name, to: :weightable
 
+  validates :value, presence: true
+
   def defaults
     self.unit = 'lbs' if unit.nil?
   end

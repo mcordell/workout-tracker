@@ -13,7 +13,7 @@
 class Cycle < ActiveRecord::Base
   belongs_to :program
   belongs_to :starting_weight,
-             class: Weight,
+             class: BodyWeight,
              foreign_key: 'starting_weight_id'
   has_many :cycle_weights, dependent: :destroy
   has_many :weights, through: :cycle_weights

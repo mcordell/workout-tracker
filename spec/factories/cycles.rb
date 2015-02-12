@@ -15,7 +15,7 @@
 
 FactoryGirl.define do
   factory :cycle do
-    association :starting_weight, factory: :weight
+    association :starting_weight, factory: :body_weight
     program
     cycle_number 1
   end

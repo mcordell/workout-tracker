@@ -23,7 +23,7 @@ class CyclesController < ApplicationController
   def create
     program = Program.find(params[:program_id])
     @cycle = program.cycles.build(cycle_params.merge({active: true}))
-    @cycle.starting_weight.weightable = current_user
+    @cycle.starting_weight.user = current_user
     @cycle = CycleCreator.create(@cycle)
     if @cycle.save
       redirect_to [@program, @cycle], notice: 'Cycle was successfully created.'
