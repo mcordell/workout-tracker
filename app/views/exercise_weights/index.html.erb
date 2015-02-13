@@ -1,8 +1,8 @@
 <div class="container">
   <div class="content">
     <ul class="nav nav-tabs nav-justified">
-      <li><%= link_to 'New Weight', new_weight_path %></li>
-      <li class="active"><%= link_to 'All', weights_path %></li>
+      <li><%= link_to 'New Weight', new_exercise_weight_path %></li>
+      <li class="active"><%= link_to 'All', exercise_weights_path %></li>
     </ul>
     <div class="page-header">
       <h1>Listing <small>weights</small></h1>
@@ -18,12 +18,12 @@
       </thead>
 
       <tbody>
-        <% @weights.each do |weight| %>
+        <% @exercise_weights.each do |weight| %>
           <tr>
                 <td><%= weight.value %></td>
                 <td><%= weight.unit %></td>
                 <td><%= link_to '', weight, class: 'glyphicon glyphicon-eye-open' %>
-                <%= link_to '', edit_weight_path(weight), class: 'glyphicon glyphicon-pencil' %>
+                <%= link_to '', edit_exercise_weight_path(weight), class: 'glyphicon glyphicon-pencil' %>
                 <%= link_to '', weight, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
             </td>
           </tr>

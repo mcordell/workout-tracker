@@ -16,7 +16,7 @@ class Cycle < ActiveRecord::Base
              class: BodyWeight,
              foreign_key: 'starting_weight_id'
   has_many :cycle_weights, dependent: :destroy
-  has_many :weights, through: :cycle_weights
+  has_many :exercise_weights, through: :cycle_weights
   has_many :subcycles, dependent: :destroy
   has_many :workouts, through: :subcycles
 
@@ -39,7 +39,7 @@ class Cycle < ActiveRecord::Base
 
   accepts_nested_attributes_for :starting_weight
   accepts_nested_attributes_for :cycle_weights
-  accepts_nested_attributes_for :weights
+  accepts_nested_attributes_for :exercise_weights
 
   validates_numericality_of(:cycle_number)
 
@@ -70,7 +70,7 @@ class Cycle < ActiveRecord::Base
 
   def cycle_weights_hash
     cycle_weights.each_with_object({}) do |cycle_weight, hsh|
-      hsh[cycle_weight.weight.name.to_sym] = cycle_weight.weight.value
+      hsh[cycle_weight.exercise_weight.name.to_sym] = cycle_weight.weight.value
     end
   end
 end

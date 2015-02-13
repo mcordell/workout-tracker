@@ -1,10 +1,10 @@
-<%= form_for(@weight) do |f| %>
-  <% if @weight.errors.any? %>
+<%= form_for(@exercise_weight) do |f| %>
+  <% if @exercise_weight.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@weight.errors.count, "error") %> prohibited this weight from being saved:</h2>
+      <h2><%= pluralize(@exercise_weight.errors.count, "error") %> prohibited this exercise weight from being saved:</h2>
 
       <ul>
-      <% @weight.errors.full_messages.each do |msg| %>
+      <% @exercise_weight.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

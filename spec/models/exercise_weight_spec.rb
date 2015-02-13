@@ -11,16 +11,16 @@
 #  weightable_id   :integer
 #  weightable_type :string(255)
 #
+require 'rails_helper'
 
-class Weight < ActiveRecord::Base
-  belongs_to :weightable, polymorphic: true
+describe ExerciseWeight do
 
-  before_create :defaults
-  delegate :name, to: :weightable
+  it_behaves_like 'weight'
 
-  validates :value, presence: true
-
-  def defaults
-    self.unit = 'lbs' if unit.nil?
+  it "delegates name to its weightable" do
+    exercise = FactoryGirl.create(:exercise, name: 'Something')
+    weight = FactoryGirl.create(:exercise_weight)
+    weight.update_attribute(:weightable, exercise)
+    expect(weight.name).to eq 'Something'
   end
 end

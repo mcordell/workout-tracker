@@ -17,17 +17,18 @@
 class WorkoutSet < ActiveRecord::Base
   belongs_to :exercise
   belongs_to :workout
-  belongs_to :weight
+  belongs_to :exercise_weight
   serialize :options, Array
 
   delegate  :cycle, to: :workout
   delegate :program, to: :workout
   delegate :subcycle, to: :workout
-  delegate :name, to: :weight, allow_nil: true
+  delegate :name, to: :exercise_weight, allow_nil: true
 
   def copy_from_object(set_obj)
     exercise = Exercise.find_or_create_by(name: set_obj.exercise)
-    self.weight = Weight.new(value: set_obj.weight, weightable: exercise)
+    self.exercise_weight = ExerciseWeight.new(value: set_obj.weight,
+                                              weightable: exercise)
     assign_reps(set_obj.reps)
   end
 

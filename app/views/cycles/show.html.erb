@@ -29,7 +29,7 @@
 						<th>Exercise</th>
 						<th>Weight</th>
 					</tr>
-				<% @cycle.weights.each do |weight| %>
+				<% @cycle.exercise_weights.each do |weight| %>
 					<tr>
 						<td><%= weight.name.humanize %></td>
 						<td><%= weight.value %></td>

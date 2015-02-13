@@ -15,6 +15,6 @@
 FactoryGirl.define do
   factory :cycle_weight do
     cycle
-    weight
+    exercise_weight
   end
 end

@@ -104,7 +104,7 @@ describe WorkoutSet do
     let(:workout) { FactoryGirl.create(:workout, subcycle: subcycle) }
     let(:exercise_name) { 'Push up' }
     let(:weight) { FactoryGirl.create(:exercise_weight, exercise_name: exercise_name) }
-    let(:workout_set) { FactoryGirl.create(:workout_set, workout: workout, weight: weight) }
+    let(:workout_set) { FactoryGirl.create(:workout_set, workout: workout, exercise_weight: weight) }
 
     describe ".program" do
       it "returns the program this workout belongs to"  do

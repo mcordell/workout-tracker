@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :subcycles
 
 
-  resources :weights
+  resources :exercise_weights
 
   devise_for :users
 

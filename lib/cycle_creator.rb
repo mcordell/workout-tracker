@@ -6,7 +6,7 @@ class CycleCreator
     when 'five_three_one'
       FiveThreeOne::Program::EXERCISES.each do |exercise_name|
         exercise = Exercise.find_by_name(exercise_name)
-        cycle.cycle_weights.build(weight: Weight.new(weightable: exercise))
+        cycle.cycle_weights.build(weight: ExerciseWeight.new(weightable: exercise))
       end
     end
   end

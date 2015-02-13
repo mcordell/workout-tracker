@@ -22,6 +22,6 @@ FactoryGirl.define do
     workout
     intended_reps 1
     performed_reps 1
-    weight
+    exercise_weight
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213060455) do
+ActiveRecord::Schema.define(version: 20150213060715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20150213060455) do
   end
 
   create_table "cycle_weights", force: :cascade do |t|
-    t.integer  "weight_id"
+    t.integer  "exercise_weight_id"
     t.integer  "cycle_id"
-    t.string   "flag",       limit: 255
+    t.string   "flag",               limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20150213060455) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active"
+  end
+
+  create_table "exercise_weights", force: :cascade do |t|
+    t.integer  "value"
+    t.integer  "user_id"
+    t.string   "unit",            limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "weightable_id"
+    t.string   "weightable_type", limit: 255
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -89,16 +99,6 @@ ActiveRecord::Schema.define(version: 20150213060455) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "weights", force: :cascade do |t|
-    t.integer  "value"
-    t.integer  "user_id"
-    t.string   "unit",            limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "weightable_id"
-    t.string   "weightable_type", limit: 255
-  end
-
   create_table "workout_sets", force: :cascade do |t|
     t.integer  "exercise_id"
     t.integer  "workout_id"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20150213060455) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "options"
-    t.integer  "weight_id"
+    t.integer  "exercise_weight_id"
   end
 
   add_index "workout_sets", ["exercise_id"], name: "index_workout_sets_on_exercise_id", using: :btree
