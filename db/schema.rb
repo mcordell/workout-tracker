@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211063526) do
+ActiveRecord::Schema.define(version: 20150213060455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20150211063526) do
     t.integer  "exercise_id"
     t.integer  "workout_id"
     t.integer  "intended_reps"
-    t.integer  "weight"
     t.integer  "performed_reps"
     t.datetime "created_at"
     t.datetime "updated_at"
