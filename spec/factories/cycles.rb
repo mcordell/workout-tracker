@@ -41,4 +41,21 @@ FactoryGirl.define do
       cycle.program = FactoryGirl.create(:program, active: true)
     end
   end
+
+  trait :with_cycle_weight_name_and_values do
+    transient do
+      cycle_weight_pairs []
+    end
+
+    after(:create) do |cycle, evaluator|
+      evaluator.cycle_weight_pairs.each do |name, value|
+        FactoryGirl.create(:cycle_weight,
+                           :with_exercise_name_and_value,
+                           name: name,
+                           value: value,
+                           cycle: cycle
+                          )
+      end
+    end
+  end
 end

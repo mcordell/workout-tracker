@@ -17,4 +17,17 @@ FactoryGirl.define do
     cycle
     exercise_weight
   end
+
+  trait :with_exercise_name_and_value do
+    transient do
+      name 'Pull up'
+      value 20
+    end
+
+    after(:create) do |cycle_weight, evaluator|
+      exercise_weight = cycle_weight.exercise_weight
+      exercise_weight.exercise.update_attribute(:name, evaluator.name)
+      exercise_weight.update_attribute(:value, evaluator.value)
+    end
+  end
 end

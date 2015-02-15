@@ -129,7 +129,13 @@ describe Cycle do
     end
   end
 
-  describe "cycle_weights_hash" do
-    pending "workout the methods of weight/weightable a bit more"
+  describe ".cycle_weights_hash" do
+    it "returns a hash of cycle weight exercise names paired to their values" do
+      cycle = FactoryGirl.create(:cycle,
+                                 :with_cycle_weight_name_and_values,
+                                 cycle_weight_pairs: [[:bro_up, 70], [:pull_up, 60]]
+                                )
+      expect(cycle.cycle_weights_hash).to eq({:bro_up => 70, :pull_up => 60})
+    end
   end
 end
