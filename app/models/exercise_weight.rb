@@ -13,10 +13,10 @@
 #
 
 class ExerciseWeight < ActiveRecord::Base
-  belongs_to :weightable, polymorphic: true
+  belongs_to :exercise
 
   before_create :defaults
-  delegate :name, to: :weightable
+  delegate :name, to: :exercise
 
   validates :value, presence: true
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213060715) do
+ActiveRecord::Schema.define(version: 20150215002306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,11 +44,10 @@ ActiveRecord::Schema.define(version: 20150213060715) do
   create_table "exercise_weights", force: :cascade do |t|
     t.integer  "value"
     t.integer  "user_id"
-    t.string   "unit",            limit: 255
+    t.string   "unit",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "weightable_id"
-    t.string   "weightable_type", limit: 255
+    t.integer  "exercise_id"
   end
 
   create_table "exercises", force: :cascade do |t|

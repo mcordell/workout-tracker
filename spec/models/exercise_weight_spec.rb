@@ -17,10 +17,8 @@ describe ExerciseWeight do
 
   it_behaves_like 'weight'
 
-  it "delegates name to its weightable" do
-    exercise = FactoryGirl.create(:exercise, name: 'Something')
-    weight = FactoryGirl.create(:exercise_weight)
-    weight.update_attribute(:weightable, exercise)
-    expect(weight.name).to eq 'Something'
+  it "delegates name to its exercise" do
+    exercise_weight = FactoryGirl.create(:exercise_weight, exercise_name: 'Something')
+    expect(exercise_weight.name).to eq 'Something'
   end
 end

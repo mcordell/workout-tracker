@@ -14,7 +14,7 @@
 		<h3>Previous Cycle</h3>
 		<% if @previous_cycle %>
 			<%	@previous_cycle.cycle_weights.each do |cycle_weight| %>
-				<% weight = cycle_weight.weight %>
+				<% weight = cycle_weight.exercise_weight %>
 				<%= weight.name + " #{weight.value} "%>
 			<% end %>
 		<% end %>

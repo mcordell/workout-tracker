@@ -22,9 +22,10 @@ FactoryGirl.define do
 
     value 186
     unit "lb"
+    exercise
 
-    after(:create) do |weight, evaluator|
-      weight.weightable = FactoryGirl.create(:exercise, name: evaluator.exercise_name)
+    after(:create) do |exercise_weight, evaluator|
+      exercise_weight.exercise.update_attribute(:name, evaluator.exercise_name)
     end
   end
 end
