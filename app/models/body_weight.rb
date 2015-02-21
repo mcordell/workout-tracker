@@ -12,6 +12,7 @@
 
 class BodyWeight < ActiveRecord::Base
   before_create :defaults
+  belongs_to :user
 
   validates :value, presence: true
 

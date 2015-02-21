@@ -23,4 +23,8 @@ class ExerciseWeight < ActiveRecord::Base
   def defaults
     self.unit = 'lbs' if unit.nil?
   end
+
+  def name=(name)
+    self.exercise = Exercise.find_or_create_by(name: name)
+  end
 end

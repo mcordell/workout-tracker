@@ -55,6 +55,6 @@ class CyclesController < ApplicationController
     def cycle_params
       params.require(:cycle).permit(:cycle_number,
                                     starting_weight_attributes: [:value, :id],
-                                    cycle_weights_attributes: [exercise_weight_attributes: [:id, :value, :weightable_id, :weightable_type]])
+                                    cycle_weights_attributes: [exercise_weight_attributes: [:id, :value, :name]])
     end
 end

@@ -1,10 +1,11 @@
 <%= form.fields_for :cycle_weights do |cycle_weight_fields| %>
 	<% cycle_weight_fields.fields_for :exercise_weight do |weight_fields| %>
 		<div class="form-group">
-			<% exercise_name =  cycle_weight_fields.object.exercise_weight.name.humanize %>
-			<%= weight_fields.label :value, exercise_name, class: 'col-sm-2 control-label'%>
+			<% exercise_name =  cycle_weight_fields.object.exercise_weight.name %>
+			<%= weight_fields.label :value, exercise_name.humanize, class: 'col-sm-2 control-label'%>
 			<div class="col-md-10">
 				<%= weight_fields.text_field :value, class: 'form-control' %>
+				<%= weight_fields.hidden_field :name, value: exercise_name, class: 'form-control' %>
 			</div>
 		</div>
 	<% end %>
