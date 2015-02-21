@@ -138,4 +138,18 @@ describe Cycle do
       expect(cycle.cycle_weights_hash).to eq({:bro_up => 70, :pull_up => 60})
     end
   end
+
+  describe ".from_hash" do
+    it "does not change the subcycle count when passed an empty hash" do
+      expect{cycle.from_hash({})}.to change(cycle.subcycles.to_a, :count).by 0
+    end
+
+    context "when passed a hash two subcycle hashes" do
+      let(:valid_hash) { {subcycles:[ {number: 2}, {number: 3} ]} }
+
+      it "creates two subycles on the cycle" do
+        expect{cycle.from_hash(valid_hash)}.to change{cycle.subcycles.to_a.count}.by 2
+      end
+    end
+  end
 end

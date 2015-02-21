@@ -49,6 +49,13 @@ class Cycle < ActiveRecord::Base
     self.active ||= true
   end
 
+  def from_hash(hsh)
+    hsh[:subcycles].to_a.each_with_index do |subcycle_hash, i|
+      subcycle = subcycles.build(number: i)
+      subcycle.from_hash(subcycle_hash)
+    end
+  end
+
   def copy_from_object(cycle)
     cycle.subcycles.each_with_index do |sub, i|
       subcycle = subcycles.build

@@ -21,6 +21,13 @@ class Subcycle < ActiveRecord::Base
     end
   end
 
+  def from_hash(subcycle_hash)
+    subcycle_hash.delete(:workouts).to_a.each do |workout_hash|
+      workouts.build.from_hash(workout_hash)
+    end
+    update_attributes(subcycle_hash)
+  end
+
   def finished?
     workouts.each do |workout|
       return false unless workout.workout_date

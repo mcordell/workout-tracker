@@ -25,6 +25,8 @@ class WorkoutSet < ActiveRecord::Base
   delegate :subcycle, to: :workout
   delegate :name, to: :exercise_weight, allow_nil: true
 
+  validates :exercise_weight, presence: true
+
   def copy_from_object(set_obj)
     exercise = Exercise.find_or_create_by(name: set_obj.exercise)
     self.exercise_weight = ExerciseWeight.new(value: set_obj.weight,
@@ -41,6 +43,19 @@ class WorkoutSet < ActiveRecord::Base
     else
       self.intended_reps = reps
     end
+  end
+
+  def from_hash(hash)
+    weight_value = hash.delete(:weight)
+    exercise_name = hash.delete(:exercise)
+    if exercise_name
+      self.exercise = Exercise.find_or_create_by(name: exercise_name)
+      exercise_weight_attributes = { value: weight_value.to_i,
+                                     exercise: exercise }
+      build_exercise_weight(exercise_weight_attributes)
+    end
+    assign_reps(hash.delete(:reps))
+    update(hash)
   end
 
   def plus_set?

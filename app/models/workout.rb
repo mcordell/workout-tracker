@@ -24,4 +24,13 @@ class Workout < ActiveRecord::Base
       set.copy_from_object(set_obj)
     end
   end
+
+  def from_hash(hash)
+    sets = hash.delete(:workout_sets).to_a + hash.delete(:sets).to_a
+
+    sets.each do |set_hash|
+      workout_sets.build.from_hash(set_hash)
+    end
+    update(hash)
+  end
 end

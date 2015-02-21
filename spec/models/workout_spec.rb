@@ -27,6 +27,41 @@ describe Workout do
     end
   end
 
+  describe "from_hash" do
+    let(:workout) { Workout.new }
+
+    context "when passed an empty hash" do
+      it "does not change attributes" do
+        workout.workout_date = '2015/12/02'
+        expect{workout.from_hash({})}.not_to change(workout, :workout_date)
+      end
+
+      it "does not add workout sets" do
+        expect{workout.from_hash({})}.not_to change(workout.workout_sets.to_a, :count)
+      end
+    end
+
+    context "when passed a valid hash" do
+      let(:valid_hash) { {workout_date: '2015/12/02', workout_sets: [{}, {}]}}
+
+      it "sets attributes" do
+        workout.from_hash(valid_hash)
+        expect(workout.workout_date).to eq '2015/12/02'
+      end
+
+      it "adds two workout sets" do
+        expect{workout.from_hash(valid_hash)}.to change{ workout.workout_sets.to_a.count }.by 2
+      end
+    end
+
+    context "when passed a hash where sets are refered to as 'sets'" do
+      let(:valid_hash) { {workout_date: '2015/12/02', sets: [{}, {}]}}
+
+      it "adds two workout sets" do
+        expect{workout.from_hash(valid_hash)}.to change{ workout.workout_sets.to_a.count }.by 2
+      end
+    end
+  end
 
   describe "delegate methods" do
     let(:program) { FactoryGirl.create(:program) }

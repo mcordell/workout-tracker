@@ -19,6 +19,38 @@ require 'rails_helper'
 describe WorkoutSet do
   let(:workout_set) { FactoryGirl.build(:workout_set) }
 
+  describe ".from_hash" do
+    let(:workout_set) { WorkoutSet.new }
+
+    context "when passed an empty hash" do
+      it "does not set the exercise weight" do
+        expect{workout_set.from_hash({})}.not_to change(workout_set, :exercise_weight)
+      end
+    end
+
+    context "when passed an valid hash" do
+      let(:valid_hash) { {reps: '4+', exercise: :bench_press, weight: 250} }
+
+      before { workout_set.from_hash(valid_hash) }
+
+      it "sets the intended reps" do
+        expect(workout_set.intended_reps).to eq 4
+      end
+
+      it "set the exercise" do
+        expect(workout_set.exercise.name).to eq 'bench_press'
+      end
+
+      it "set the exercise on the exercise_weight" do
+        expect(workout_set.exercise_weight.name).to eq 'bench_press'
+      end
+
+      it "sets the weight value on the exercise_weight" do
+        expect(workout_set.exercise_weight.value).to eq 250
+      end
+    end
+  end
+
   describe ".rep_difference" do
     describe "when the performed reps is more than the intended" do
       let(:workout_set) { FactoryGirl.build(:workout_set, intended_reps: 6, performed_reps: 7) }
