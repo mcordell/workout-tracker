@@ -43,6 +43,7 @@ accessory_scheme:
     good_morning:
       reps: 12
       sets: 5
+      weight: 135
     hanging_leg_raise:
       reps: 15
       sets: 5
@@ -50,19 +51,19 @@ accessory_scheme:
     dumbbell_bench:
       reps: 15
       sets: 5
-      weight: 47.5
+      weight: 55
     dumbbell_row:
       reps: 10
       sets: 5
-      weight: 75
+      weight: 85
   squat:
     leg_press:
       reps: 15
       sets: 5
-      weight: 315
+      weight: 450
     leg_curl:
       reps: 10
       sets: 5
-      weight: 85
+      weight: 95
 
 workout_order: ['press', 'deadlift', 'bench_press', 'squat']
