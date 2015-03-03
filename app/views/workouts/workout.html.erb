@@ -23,7 +23,7 @@
 			</tr>
 	  	</thead>
 		<tbody>
-		<%@workout.workout_sets.order(:id).eager_load(:weight).each do |set| %>
+		<%@workout.workout_sets.order(:id).eager_load(:exercise_weight).each do |set| %>
 			<%= f.fields_for :workout_sets, set do |s| %>
 			<tr>
 				<td><%= set.name.humanize %></td>
@@ -31,9 +31,8 @@
 					<td><%= s.text_field :performed_reps, class: 'form_control', placeholder: "#{set.intended_reps}+" %></td>
 				<% else %>
 					<td><%= s.text_field :performed_reps, value: set.intended_reps, class: 'form_control' %></td>
-
 				<% end -%>
-				<td><%= set.weight.value if set.weight %></td>
+				<td><%= set.exercise_weight.value if set.exercise_weight %></td>
 			</tr>
 			<% end -%>
 		<% end -%>
