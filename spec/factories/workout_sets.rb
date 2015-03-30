@@ -18,10 +18,22 @@
 
 FactoryGirl.define do
   factory :workout_set do
-    exercise nil
+    transient do
+      weight 200
+    end
+
     workout
     intended_reps 1
     performed_reps 1
     exercise_weight
+
+    factory :press_workout_set do
+      exercise_weight FactoryGirl.create(:exercise_weight, exercise_name: 'Press')
+    end
+
+    after(:create) do |workout_set, evaluator|
+      exercise_weight = workout_set.exercise_weight
+      exercise_weight.update_attribute(:value, evaluator.weight)
+    end
   end
 end
