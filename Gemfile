@@ -21,6 +21,8 @@ gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
   gem 'spring'
   gem 'pry-rails'
   gem 'annotate'
