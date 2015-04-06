@@ -30,5 +30,23 @@ RSpec.describe "Doing a workout", type: :request do
         end
       end
     end
+
+    feature "clicking the quick add button", js: true do
+      let(:workout) { FactoryGirl.create(:workout) }
+      let(:do_workout_page) { DoWorkoutPage.new(workout) }
+
+      before do
+        do_workout_page.goto
+        do_workout_page.click_quick_add_button
+      end
+
+      it "does not change the page" do
+        expect(current_path).to eq do_workout_page.page_path
+      end
+
+      it "adds the quick add row" do
+        expect(do_workout_page).to have_quick_add_row
+      end
+    end
   end
 end

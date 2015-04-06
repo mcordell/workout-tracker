@@ -22,7 +22,7 @@
 				<th>Weight</th>
 			</tr>
 	  	</thead>
-		<tbody>
+		<tbody id="sets">
 		<%@workout.workout_sets.order(:id).eager_load(:exercise_weight).each do |set| %>
 			<%= f.fields_for :workout_sets, set do |s| %>
 			<tr>
@@ -38,11 +38,30 @@
 		<% end -%>
 		</tbody>
 	  </table></div>
+	  <button class="quick-add">+</button>
 	  <div class="form-group">
 		<%= f.text_area :notes, class: 'form-control', placeholder: 'Notes' %>
 	  </div>
 	  <div class="actions">
 		<%= f.submit class: 'btn btn-primary' %>
+	  </div>
+
+	  <div class = "hidden">
+		  <table id="new-workout-set-template">
+			<tr class="quick-add">
+				<td>
+					<%= select 'new_workout_set[new_set_id]', :exercise_id,
+						Exercise.all.collect { |e| [ e.name, e.id ] }, {},
+						{class: 'form-control'} %>
+				</td>
+				<td>
+					<%= text_field "new_workout_set[new_set_id]", :performed_reps, class: 'form-control' %>
+				</td>
+				<td>
+					<%= text_field "new_workout_set[new_set_id]", :weight, class: 'form-control' %>
+				</td>
+			</tr>
+		</table>
 	  </div>
 	<% end %>
 
