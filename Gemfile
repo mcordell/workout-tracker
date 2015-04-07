@@ -30,7 +30,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'rspec-rails'
   gem 'guard-rspec'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', require: false
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
