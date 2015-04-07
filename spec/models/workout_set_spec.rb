@@ -75,6 +75,14 @@ describe WorkoutSet do
         expect(workout_set.rep_difference).to be_nil
       end
     end
+
+    describe "when the intended reps is nil" do
+      let(:workout_set) { FactoryGirl.build(:workout_set, intended_reps: nil, performed_reps: 12) }
+
+      it "returns the performed reps" do
+        expect(workout_set.rep_difference).to eq 12
+      end
+    end
   end
 
   describe ".assign_reps" do

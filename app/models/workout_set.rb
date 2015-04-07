@@ -63,6 +63,6 @@ class WorkoutSet < ActiveRecord::Base
   end
 
   def rep_difference
-    performed_reps - intended_reps if performed_reps
+    performed_reps - (intended_reps || 0) if performed_reps
   end
 end
