@@ -1,5 +1,7 @@
 ##Workout Tacker
 
+[![Circle CI](https://circleci.com/gh/mcordell/workout-tracker/tree/master.svg?style=svg)](https://circleci.com/gh/mcordell/workout-tracker/tree/master)
+
 Workout tracker is my playground Rails app. I primarily use it to test out new
 stuff while still getting something that is useful to me. It is primarily
 useful for tracking periodic weight training.
