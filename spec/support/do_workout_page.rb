@@ -31,4 +31,18 @@ class DoWorkoutPage < BasePage
   def has_quick_add_row?
     has_css?("tr.quick-add")
   end
+
+  def fill_quick_add_row(row, exercise, reps, weight)
+    row.select(exercise)
+    row.find('input[id$="performed_reps"]').set(reps)
+    row.find('input[id$="weight"]').set(weight)
+  end
+
+  def submit
+    click_on('Update Workout')
+  end
+
+  def updated_successfully?
+    find('div.alert').has_text? 'Workout was successfully updated.'
+  end
 end
