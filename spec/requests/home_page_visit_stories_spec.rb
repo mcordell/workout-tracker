@@ -34,6 +34,10 @@ RSpec.describe "visiting the Home page", type: :request do
       it "contains a link to the program lists" do
         expect(home_page).to have_programs_link
       end
+
+      it "contains a link for exercise list" do
+        expect(home_page).to have_exercises_link
+      end
     end
   end
 end
