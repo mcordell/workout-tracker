@@ -13,4 +13,12 @@ class Exercise < ActiveRecord::Base
   has_many :exercise_weights, as: :weightable
 
   validates :name, presence: true
+
+  def display_name
+    name.humanize
+  end
+
+  def display_name=(display_name)
+    self.name = display_name.gsub(/(.) ([A-Za-z])/, '\1_\2').downcase
+  end
 end

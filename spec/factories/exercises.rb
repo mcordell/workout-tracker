@@ -12,6 +12,6 @@
 
 FactoryGirl.define do
   factory :exercise do
-    name "MyString"
+    display_name 'Overhead press'
   end
 end

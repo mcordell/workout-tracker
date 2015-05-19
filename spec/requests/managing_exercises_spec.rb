@@ -12,8 +12,8 @@ RSpec.describe "managing exercises", type: :request do
       let(:exercise_names) { %w{ Deadlift Squat} }
 
       before do
-        @press_exercise = FactoryGirl.create(:exercise, name: 'Press')
-        exercise_names.each { |e| FactoryGirl.create(:exercise, name: e) }
+        @press_exercise = FactoryGirl.create(:exercise, display_name: 'Press')
+        exercise_names.each { |e| FactoryGirl.create(:exercise, display_name: e) }
         exercise_page.goto
       end
 

@@ -17,6 +17,7 @@ class ExerciseWeight < ActiveRecord::Base
 
   before_create :defaults
   delegate :name, to: :exercise
+  delegate :display_name, to: :exercise
 
   validates :value, presence: true
 

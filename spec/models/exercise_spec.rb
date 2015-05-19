@@ -20,4 +20,20 @@ describe Exercise do
       expect(exercise).not_to be_valid
     end
   end
+
+  describe ".display_name" do
+    before { exercise.name = 'overhead_press' }
+
+    it "returns a humanized version of the name" do
+      expect(exercise.display_name).to eq 'Overhead press'
+    end
+  end
+
+  describe ".display_name=" do
+    it "sets a snake case version of the display name" do
+      exercise.name = nil
+      exercise.display_name = 'Overhead press'
+      expect(exercise.name).to eq 'overhead_press'
+    end
+  end
 end

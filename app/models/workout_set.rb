@@ -24,6 +24,7 @@ class WorkoutSet < ActiveRecord::Base
   delegate :program, to: :workout
   delegate :subcycle, to: :workout
   delegate :name, to: :exercise_weight, allow_nil: true
+  delegate :display_name, to: :exercise_weight, allow_nil: true
 
   validates :exercise_weight, presence: true
 

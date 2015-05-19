@@ -26,7 +26,7 @@
 		<%@workout.workout_sets.order(:id).eager_load(:exercise_weight).each do |set| %>
 			<%= f.fields_for :workout_sets, set do |s| %>
 			<tr>
-				<td><%= set.name.humanize %></td>
+				<td><%= set.display_name %></td>
 				<% if set.plus_set? %>
 					<td><%= s.text_field :performed_reps, class: 'form_control', placeholder: "#{set.intended_reps}+" %></td>
 				<% else %>
@@ -51,7 +51,7 @@
 			<tr class="quick-add">
 				<td>
 					<%= select 'new_workout_set[new_set_id]', :exercise_id,
-						Exercise.all.collect { |e| [ e.name, e.id ] }, {},
+						Exercise.all.collect { |e| [ e.display_name, e.id ] }, {},
 						{class: 'form-control'} %>
 				</td>
 				<td>
@@ -64,6 +64,5 @@
 		</table>
 	  </div>
 	<% end %>
-
   </div>
 </div>
