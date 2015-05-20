@@ -1,53 +1,50 @@
 class ExercisesController < ApplicationController
-  load_and_authorize_resource param_method: :exercise_params
+  include Trailblazer::Operation::Controller
+  require 'trailblazer/operation/controller/active_record'
+  include Trailblazer::Operation::Controller::ActiveRecord
+  respond_to :html
 
-  # GET /exercises
   def index
+    throw(:warden) unless current_user
     @exercises = Exercise.all
   end
 
-  # GET /exercises/1
   def show
+    present Exercise::Update
   end
 
-  # GET /exercises/new
   def new
-    @exercise = Exercise.new
+    form Exercise::Create
   end
 
-  # GET /exercises/1/edit
   def edit
+    form Exercise::Update
+    render :new
   end
 
-  # POST /exercises
   def create
-    @exercise = Exercise.new(exercise_params)
-
-    if @exercise.save
-      redirect_to @exercise, notice: 'Exercise was successfully created.'
-    else
-      render :new
+    run Exercise::Create do |op|
+      return redirect_to op.model, notice: 'Exercise was successfully created.'
     end
+
+    render :new
   end
 
-  # PATCH/PUT /exercises/1
   def update
-    if @exercise.update(exercise_params)
-      redirect_to @exercise, notice: 'Exercise was successfully updated.'
-    else
-      render :edit
+    run Exercise::Update do |op|
+      return redirect_to op.model, notice: 'Exercise was successfully updated.'
     end
+
+    render :new
   end
 
-  # DELETE /exercises/1
   def destroy
-    @exercise.destroy
-    redirect_to exercises_url, notice: 'Exercise was successfully destroyed.'
+    run Exercise::Delete do
+      redirect_to exercises_url, notice: 'Exercise was successfully destroyed.'
+    end
   end
 
-  private
-    # Only allow a trusted parameter "white list" through.
-    def exercise_params
-      params.require(:exercise).permit(:name, :display_name)
-    end
+  def params
+    super.merge(current_user: current_user)
+  end
 end
