@@ -1,4 +1,4 @@
-class ExercisePage < BasePage
+class ExerciseListPage < BasePage
   SHOW_ICON = 'glyphicon-eye-open'
   EDIT_ICON = 'glyphicon-pencil'
   DELETE_ICON = 'glyphicon-trash'

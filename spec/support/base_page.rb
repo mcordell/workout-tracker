@@ -24,4 +24,12 @@ class BasePage
   def has_login_button?
     has_link? 'Sign In', href: new_user_session_path
   end
+
+  def has_form_errors?
+    has_css? 'div#error_explanation'
+  end
+
+  def driver
+    page.driver
+  end
 end

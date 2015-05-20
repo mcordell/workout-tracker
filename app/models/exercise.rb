@@ -15,7 +15,7 @@ class Exercise < ActiveRecord::Base
   validates :name, presence: true
 
   def display_name
-    name.humanize
+    name.to_s.humanize
   end
 
   def display_name=(display_name)
