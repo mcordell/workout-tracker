@@ -7,6 +7,7 @@ gem 'devise'
 gem 'figaro'
 gem 'cancancan'
 gem 'pg'
+gem 'trailblazer'
 
 #Asset stuff
 gem 'sass-rails', '~> 4.0.3'

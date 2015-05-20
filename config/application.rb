@@ -22,3 +22,5 @@ module WorkoutTracker
     config.autoload_paths += %W(#{config.root}/lib)
   end
 end
+
+require 'trailblazer/rails/railtie'
