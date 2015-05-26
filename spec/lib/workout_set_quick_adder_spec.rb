@@ -10,9 +10,10 @@ describe WorkoutSetQuickAdder do
   }
 
   describe "adding sets to the workout" do
+    let!(:workout) { FactoryGirl.create(:workout) }
+
     context "with valid parameters" do
       let(:workout_set_quick_adder) { WorkoutSetQuickAdder.new(test_params) }
-      let!(:workout) { FactoryGirl.create(:workout) }
 
       before do
          workout_set_quick_adder.add_sets_to_workout(workout)
@@ -35,6 +36,14 @@ describe WorkoutSetQuickAdder do
 
       it "adds the first set with proper performed reps" do
          expect(@first.performed_reps).to eq 2
+      end
+    end
+
+    context "with nil params" do
+      let(:workout_set_quick_adder) { WorkoutSetQuickAdder.new(nil) }
+      it "does not add sets to the workout" do
+        expect { workout_set_quick_adder.add_sets_to_workout(workout) }
+          .not_to change(workout.workout_sets, :length)
       end
     end
   end
