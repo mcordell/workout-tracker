@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 
 gem 'five_three_one'
 gem 'rails_12factor', group: :production
+gem 'cells'
 
 group :development, :test do
   gem 'capybara'
