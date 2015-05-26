@@ -9,6 +9,26 @@
       <h1>New <small>exercise</small></h1>
     </div>
 
-    <%= render 'form' %>
+	<%= form_for(@form) do |f| %>
+	  <% if @form.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= pluralize(@form.errors.count, "error") %> prohibited this exercise from being saved:</h2>
+
+		  <ul>
+		  <% @form.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		  <% end %>
+		  </ul>
+		</div>
+	  <% end %>
+
+	  <div class="form-group">
+		<%= f.label :display_name, 'Name' %><br>
+		<%= f.text_field :display_name, class: 'form-control', placeholder: 'Exercise Name' %>
+	  </div>
+	  <div class="actions">
+		<%= f.submit class: 'btn btn-primary' %>
+	  </div>
+	<% end %>
   </div>
 </div>

@@ -20,10 +20,7 @@
         <% @exercises.each do |exercise| %>
           <tr>
                 <td><%= exercise.display_name %></td>
-                <td><%= link_to '', exercise, class: 'glyphicon glyphicon-eye-open' %>
-                <%= link_to '', edit_exercise_path(exercise), class: 'glyphicon glyphicon-pencil' %>
-                <%= link_to '', exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
-            </td>
+				<td><%= cell(:index_actions, exercise).call(:show) %> </td>
           </tr>
         <% end %>
       </tbody>
