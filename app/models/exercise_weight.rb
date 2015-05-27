@@ -20,6 +20,7 @@ class ExerciseWeight < ActiveRecord::Base
   delegate :display_name, to: :exercise
 
   validates :value, presence: true
+  validates :exercise, presence: true
 
   def defaults
     self.unit = 'lbs' if unit.nil?
