@@ -32,6 +32,10 @@ class DoWorkoutPage < BasePage
     has_css?("tr.quick-add")
   end
 
+  def has_errors?
+    has_css?("div#error_explanation")
+  end
+
   def fill_quick_add_row(row, exercise, reps, weight)
     row.select(exercise)
     row.find('input[id$="performed_reps"]').set(reps)

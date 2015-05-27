@@ -42,7 +42,7 @@ RSpec.describe "Doing a workout", type: :request do
         do_workout_page.click_quick_add_button
       end
 
-      it "does not change the page" do
+      it "does not change the current page" do
         expect(current_path).to eq do_workout_page.page_path
       end
 
@@ -51,16 +51,75 @@ RSpec.describe "Doing a workout", type: :request do
       end
 
       feature "adding a set via the quick add row and clicking submit" do
-        it "adds the set to the workout" do
+        before do
+          @before_count = workout.workout_sets.count
           row = find('tr.quick-add')
           do_workout_page.fill_quick_add_row(row, 'Deadlift', 5, 400)
           do_workout_page.submit
+        end
+
+        it "redirects to the workout" do
+          expect(current_path).to eq workout_path(workout)
+        end
+
+        it "displays a notice that the workout was updated successfully" do
+          expect(do_workout_page).to be_updated_successfully
+        end
+
+        it "adds the set to the workout" do
           expect(do_workout_page).to be_updated_successfully
           new_set = workout.workout_sets.last
           expect(new_set.performed_reps).to eq 5
           expect(new_set.exercise_weight.value).to eq 400
           expect(new_set.exercise_weight.name).to eq 'Deadlift'
         end
+
+        it "adds one new workout set" do
+          expect(do_workout_page).to be_updated_successfully
+          expect(workout.workout_sets.count).to eq @before_count + 1
+        end
+      end
+
+      feature "adding a set via the quick add row without reps" do
+        before do
+          row = find('tr.quick-add')
+          do_workout_page.fill_quick_add_row(row, 'Deadlift', '', 400)
+          do_workout_page.submit
+        end
+
+        it "re-renders the do workout page" do
+          expect(do_workout_page).to have_column_headers
+        end
+
+        it "displays an error" do
+          expect(do_workout_page).to have_errors
+        end
+      end
+    end
+  end
+
+  context 'when not logged in' do
+    feature "visiting the do workout page" do
+      it "redirects to the home page" do
+        do_workout_page.goto
+        expect(current_path).to eq root_path
+      end
+    end
+
+    feature "PUTing to the workout update" do
+      let(:driver) { BasePage.new.driver }
+      before do
+        driver.put doworkout_path(workout), { workout: { workout_date: Time.now } }
+      end
+
+      it "does not change the exercise" do
+        expect {
+          workout.reload
+        }.not_to change { workout.workout_date }
+      end
+
+      it "redirects" do
+        expect(driver.response.status).to eq 302
       end
     end
   end
