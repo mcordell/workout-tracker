@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :workouts
 
   get 'doworkout/:id', to: "workouts#workout", as: 'doworkout'
+  patch 'doworkout/:id', to: "workouts#doworkout"
+  put 'doworkout/:id', to: "workouts#doworkout"
 
   resources :subcycles
 

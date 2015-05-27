@@ -29,13 +29,21 @@ class WorkoutsController < ApplicationController
   end
 
   def update
+    if @workout.update(workout_params)
+      redirect_to @workout, notice: 'Workout was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def doworkout
     @workout.workout_date = Time.now
     quick_adder = WorkoutSetQuickAdder.new(params['new_workout_set'])
     quick_adder.add_sets_to_workout(@workout)
     if @workout.update(workout_params)
       redirect_to @workout, notice: 'Workout was successfully updated.'
     else
-      render :edit
+      render :workout
     end
   end
 

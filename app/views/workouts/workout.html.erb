@@ -1,6 +1,6 @@
 <div class="container">
   <div class="content">
-	<%= form_for(@workout) do |f| %>
+	<%= form_for(@workout, url: doworkout_path) do |f| %>
 	  <% if @workout.errors.any? %>
 		<div id="error_explanation">
 		  <h2><%= pluralize(@workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
