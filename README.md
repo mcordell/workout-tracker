@@ -1,6 +1,8 @@
 ##Workout Tacker
 
+[![Code Climate](https://codeclimate.com/github/mcordell/workout-tracker/badges/gpa.svg)](https://codeclimate.com/github/mcordell/workout-tracker)
 [![Circle CI](https://circleci.com/gh/mcordell/workout-tracker/tree/master.svg?style=svg)](https://circleci.com/gh/mcordell/workout-tracker/tree/master)
+[![Test Coverage](https://codeclimate.com/github/mcordell/workout-tracker/badges/coverage.svg)](https://codeclimate.com/github/mcordell/workout-tracker/coverage)
 
 Workout tracker is my playground Rails app. I primarily use it to test out new
 stuff while still getting something that is useful to me. It is primarily

@@ -40,7 +40,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'simplecov', require: false
+  gem "codeclimate-test-reporter", require: nil
 end
 
 # Use unicorn as the app server
