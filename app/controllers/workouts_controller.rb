@@ -1,5 +1,10 @@
 class WorkoutsController < ApplicationController
-  load_and_authorize_resource param_method: :workout_params
+  load_and_authorize_resource param_method: :workout_params, except: [:update]
+  include Trailblazer::Operation::Controller
+  require 'trailblazer/operation/controller/active_record'
+  include Trailblazer::Operation::Controller::ActiveRecord
+  respond_to :html
+  before_filter :load_current_user_into_params, only: [:workout, :doworkout]
 
   def index
     @workouts = Workout.all
@@ -26,6 +31,7 @@ class WorkoutsController < ApplicationController
   end
 
   def workout
+   form Workout::DoWorkout
   end
 
   def update
@@ -37,14 +43,11 @@ class WorkoutsController < ApplicationController
   end
 
   def doworkout
-    @workout.workout_date = Time.now
-    quick_adder = WorkoutSetQuickAdder.new(params['new_workout_set'])
-    quick_adder.add_sets_to_workout(@workout)
-    if @workout.update(workout_params)
-      redirect_to @workout, notice: 'Workout was successfully updated.'
-    else
-      render :workout
+    run Workout::DoWorkout do |op|
+      return redirect_to op.model, notice: 'Workout was successfully updated.'
     end
+
+    render :workout
   end
 
   def destroy
@@ -53,13 +56,18 @@ class WorkoutsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_workout
-      @workout = Workout.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def workout_params
-      params.require(:workout).permit(:subcycle_id, :workout_date, :notes, workout_sets_attributes: [:performed_reps, :id])
-    end
+  def load_current_user_into_params
+    params.merge!(current_user: current_user)
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_workout
+    @workout = Workout.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def workout_params
+    params.require(:workout).permit(:subcycle_id, :workout_date, :notes, workout_sets_attributes: [:performed_reps, :id])
+  end
 end

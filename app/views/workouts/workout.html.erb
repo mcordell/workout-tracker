@@ -1,12 +1,12 @@
 <div class="container">
   <div class="content">
-	<%= form_for(@workout, url: doworkout_path) do |f| %>
-	  <% if @workout.errors.any? %>
+	<%= form_for(@form, url: doworkout_path) do |f| %>
+	  <% if @form.errors.any? %>
 		<div id="error_explanation">
 		  <h2><%= pluralize(@workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
 
 		  <ul>
-		  <% @workout.errors.full_messages.each do |msg| %>
+		  <% @form.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
 		  <% end %>
 		  </ul>
@@ -23,11 +23,11 @@
 			</tr>
 	  	</thead>
 		<tbody id="sets">
-		<%@workout.workout_sets.order(:id).eager_load(:exercise_weight).each do |set| %>
+		<% @form.workout_sets.each do |set| %>
 			<%= f.fields_for :workout_sets, set do |s| %>
 			<tr>
 				<td><%= set.display_name %></td>
-				<% if set.plus_set? %>
+				<% if set.model.plus_set? %>
 					<td><%= s.text_field :performed_reps, class: 'form_control', placeholder: "#{set.intended_reps}+" %></td>
 				<% else %>
 					<td><%= s.text_field :performed_reps, value: set.intended_reps, class: 'form_control' %></td>
