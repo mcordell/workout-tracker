@@ -1,7 +1,7 @@
 new_set_count = 0
 
 ready = ->
-  $('button.quick-add').click( (event) ->
+  $('button#quick-add').click( (event) ->
     appendSet()
     event.preventDefault())
 

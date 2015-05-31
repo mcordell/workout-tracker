@@ -1,6 +1,8 @@
 class DoWorkoutPage < BasePage
   attr_accessor :workout
 
+  QUICK_ADD_BUTTON = 'button#quick-add'
+
   def initialize(workout)
     @workout = workout
   end
@@ -20,12 +22,11 @@ class DoWorkoutPage < BasePage
   end
 
   def has_quick_add_button?
-    save_and_open_page
-    has_css?('button .quick-add')
+    has_css?(QUICK_ADD_BUTTON)
   end
 
   def click_quick_add_button
-    find("button.quick-add", match: :first).click
+    find(QUICK_ADD_BUTTON, match: :first).click
   end
 
   def has_quick_add_row?

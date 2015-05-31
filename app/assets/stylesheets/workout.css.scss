@@ -1,15 +1,33 @@
-button.quick-add {
-    border-radius: 20px;
-    width: 40px;
-    height: 40px;
-    background-color: green;
-    line-height: 30px;
-    font-size: 30px;
-    padding-bottom: 10px;
-    color: white;
-    margin-bottom: 10px;
-    font-weight: 100;
-	border: 0;
-	font-weight: 100;
+/**
+http://bootsnipp.com/snippets/featured/circle-button
+*/
+button.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+button.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+button.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+button#quick-add {
+  margin-bottom: 15px;
 }
 
